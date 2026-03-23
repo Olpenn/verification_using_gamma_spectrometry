@@ -1,0 +1,11 @@
+This is created with the following settings:
+Cylinder detector with: 
+inner radius 0. cm
+outer radius 2. cm
+height 2. cm
+
+No source geometry
+
+U235 emitted from origo
+
+/process/had/rdm/nucleusLimits 235 235 92 92 used

@@ -1,0 +1,13 @@
+This is created with the following settings:
+Cylinder detector with: 
+inner radius 0. cm
+outer radius 2. cm
+height 2. cm
+
+No source geometry
+
+Co60 emitted from origo
+
+1000000 events simulated
+
+10000 bins between 0 eV and 2.6 MeV

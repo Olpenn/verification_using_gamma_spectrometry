@@ -1,0 +1,34 @@
+/run/initialize
+
+# initialize window
+/vis/open OGL 600x600-0+0
+/vis/drawVolume
+/vis/viewer/set/viewpointVector 1 1 1
+/vis/viewer/set/autoRefresh true
+
+# Colorful trajectories
+/vis/scene/add/trajectories smooth
+/vis/modeling/trajectories/create/drawByParticleID
+
+# Special colors for special particles
+/vis/modeling/trajectories/drawByParticleID-0/set       e+ magenta
+/vis/modeling/trajectories/drawByParticleID-0/set       gamma cyan
+/vis/modeling/trajectories/drawByParticleID-0/set       e- red
+/vis/modeling/trajectories/drawByParticleID-0/set       ion blue
+/vis/modeling/trajectories/drawByParticleID-0/set       nu_e yellow
+/vis/modeling/trajectories/drawByParticleID-0/set       anti_nu_e yellow
+
+
+/vis/scene/endOfEventAction accumulate
+
+/process/had/rdm/hlThreshold 1e30 year
+/process/had/rdm/thresholdForVeryLongDecayTime 1e30 year
+
+
+
+# /gui/addMenu sourceMenu "Emission Sources"
+# /gui/addButton sourceMenu "Gamma Ray" "/control/execute gamma_button.mac"
+# /gui/addButton sourceMenu "Co-60" "/control/execute co60_button.mac"
+
+
+/vis/viewer/refresh
