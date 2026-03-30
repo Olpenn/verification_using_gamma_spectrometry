@@ -5,16 +5,14 @@ PMRunAction::PMRunAction()
 {
     G4AnalysisManager *analysisManager = G4AnalysisManager::Instance();
     G4double Emin = 0.;
-    G4double Emax = 2.3 * MeV;
-    G4int nBins = 10000;
+    G4double Emax = 2.5 * MeV;
+    G4int nBins = 25000;
 
-    analysisManager->CreateH1("Source",     "Energy of Gamma rays exiting the Source",      nBins, Emin, Emax);
-    analysisManager->CreateH1("Reflector",  "Energy of Gamma rays exiting the Reflector",   nBins, Emin, Emax);
-    analysisManager->CreateH1("Tamper",     "Energy of Gamma rays exiting the Tamper",      nBins, Emin, Emax);
-    analysisManager->CreateH1("HE",         "Energy of Gamma rays exiting the HE",          nBins, Emin, Emax);
-    analysisManager->CreateH1("Casing",     "Energy of Gamma rays exiting the Casing",      nBins, Emin, Emax);
-    analysisManager->CreateH1("Shield",     "Energy of Gamma rays exiting the Shield",      nBins, Emin, Emax);
-    analysisManager->CreateH1("Detector",   "Energy of Gamma rays exiting the Detector",    nBins, Emin, Emax);
+    analysisManager->CreateH1("Core",           "Energy of Gamma rays exiting the Core",            nBins, Emin, Emax, "MeV");
+    analysisManager->CreateH1("Reflector",      "Energy of Gamma rays exiting the Reflector",       nBins, Emin, Emax);
+    analysisManager->CreateH1("HE",             "Energy of Gamma rays exiting the HE",              nBins, Emin, Emax);
+    analysisManager->CreateH1("RadiationCase",  "Energy of Gamma rays exiting the Radiation Case",  nBins, Emin, Emax);
+    analysisManager->CreateH1("Casing",         "Energy of Gamma rays exiting the Casing",          nBins, Emin, Emax);
 }
 
 PMRunAction::~PMRunAction() {}

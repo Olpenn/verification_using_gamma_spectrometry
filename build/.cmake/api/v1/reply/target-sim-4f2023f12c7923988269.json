@@ -61,9 +61,6 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g"
-				},
-				{
 					"backtrace" : 2,
 					"fragment" : "-fPIC"
 				},
@@ -127,6 +124,10 @@
 				},
 				{
 					"backtrace" : 2,
+					"define" : "QT_NO_DEBUG"
+				},
+				{
+					"backtrace" : 2,
 					"define" : "QT_WIDGETS_LIB"
 				}
 			],
@@ -142,15 +143,15 @@
 				},
 				{
 					"backtrace" : 5,
-					"path" : "/home/olovrahm/programs/Geant4-test/include"
+					"path" : "/home/olovrahm/programs/Verification/include"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "/home/olovrahm/programs/Geant4-test/-W -Wall -pedantic -Wno-non-virtual-dtor -Wno-long-long -Wwrite-strings -Wpointer-arith -Woverloaded-virtual -Wno-variadic-macros -Wshadow -pipe -pthread -ftls-model=initial-exec -std=c++17"
+					"path" : "/home/olovrahm/programs/Verification/-W -Wall -pedantic -Wno-non-virtual-dtor -Wno-long-long -Wwrite-strings -Wpointer-arith -Woverloaded-virtual -Wno-variadic-macros -Wshadow -pipe -pthread -ftls-model=initial-exec -std=c++17"
 				},
 				{
 					"backtrace" : 5,
-					"path" : "/home/olovrahm/programs/Geant4-test/-pipe -fsigned-char -pthread"
+					"path" : "/home/olovrahm/programs/Verification/-pipe -fsigned-char -pthread"
 				},
 				{
 					"backtrace" : 2,
@@ -210,10 +211,6 @@
 	{
 		"commandFragments" : 
 		[
-			{
-				"fragment" : "-g",
-				"role" : "flags"
-			},
 			{
 				"fragment" : "",
 				"role" : "flags"

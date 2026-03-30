@@ -42,14 +42,12 @@ private:
     G4LogicalVolume* logicWorld = nullptr;
 
     // Declare the logicvolumes in the header to access it in differnet methods later.
-    G4LogicalVolume* logicSource = nullptr;
+    G4LogicalVolume* logicCore = nullptr;
     G4LogicalVolume* logicReflector = nullptr;
-    G4LogicalVolume* logicTamper = nullptr;
     G4LogicalVolume* logicHE = nullptr;
+    G4LogicalVolume* logicRadiationCase = nullptr;
     G4LogicalVolume* logicCasing = nullptr;
-    G4LogicalVolume* logicShield = nullptr;
 
-    G4LogicalVolume* logicDetector = nullptr;
 
     G4LogicalVolume* GetLayer(G4double radiusInner, G4double radiusOuter, G4Material* material, G4String name);
     

@@ -1,4 +1,4 @@
-#/run/numberOfThreads 4
+#/run/numberOfThreads 2
 
 /run/initialize
 
@@ -6,8 +6,5 @@
 /process/had/rdm/thresholdForVeryLongDecayTime 1e30 year
 
 
-/run/printProgress 1000
-
-# Ca. 20 Bq/mg ~ 100000 Bq
-# 10 seconds is equivalent to 1000000
-/run/beamOn 10000
+/run/printProgress 10000
+/run/beamOn 100000

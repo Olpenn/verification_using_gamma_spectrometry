@@ -1,3 +1,6 @@
-track 46: gamma 999 keV
-
-Ansätt binomialfördelning i osäkerhet på rootfilen.
+Skal:
+HEU
+Reflector
+HE
+DU 5mm
+Al

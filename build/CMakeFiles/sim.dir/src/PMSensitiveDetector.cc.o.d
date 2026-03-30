@@ -1,7 +1,7 @@
 CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.o: \
- /home/olovrahm/programs/Geant4-test/src/PMSensitiveDetector.cc \
+ /home/olovrahm/programs/Verification/src/PMSensitiveDetector.cc \
  /usr/include/stdc-predef.h \
- /home/olovrahm/programs/Geant4-test/include/PMSensitiveDetector.hh \
+ /home/olovrahm/programs/Verification/include/PMSensitiveDetector.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4VSensitiveDetector.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4CollectionNameVector.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/globals.hh \
@@ -494,6 +494,6 @@ CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.o: \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleChange.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleChange.icc \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ProcessType.hh \
- /home/olovrahm/programs/Geant4-test/include/PMRunAction.hh \
+ /home/olovrahm/programs/Verification/include/PMRunAction.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4UserRunAction.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4Run.hh

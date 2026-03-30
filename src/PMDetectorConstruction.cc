@@ -152,12 +152,11 @@ G4VPhysicalVolume *PMDetectorConstruction::Construct()
 // The model that is to be designed consists of the dimensions:
 // Air
 //
-// Fissile material, U or Pu, Using bateman to solve for concentration
+// Fissile material, HEU or WgPu, Using bateman to solve for concentration
 // Neutron reflector, Be
-// Tamper, Th
 // High Explosive, TNT
+// Radiation Case Shield, DU
 // Casing, Al
-// Shield, U
 // Surrounding, Air
 
     // Load variables defined in the python script
@@ -183,38 +182,20 @@ G4VPhysicalVolume *PMDetectorConstruction::Construct()
     G4VPhysicalVolume *physWorld = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), logicWorld, "physWorld", 0, false, 0, checkOverlaps);
 
 
-    // Create source
-    logicSource = GetLayer(json_data["Core"]["inner"].get<double>()*cm, json_data["Core"]["outer"].get<double>()*cm, sourceMat, "Core");
+    // Create core
+    logicCore = GetLayer(json_data["Core"]["inner"].get<double>()*cm, json_data["Core"]["outer"].get<double>()*cm, sourceMat, "Core");
 
     // Create reflector
     logicReflector = GetLayer(json_data["Reflector"]["inner"].get<double>()*cm, json_data["Reflector"]["outer"].get<double>()*cm, refMat, "Reflector");
 
-    // Create tamper
-    logicTamper = GetLayer(json_data["Tamper"]["inner"].get<double>()*cm, json_data["Tamper"]["outer"].get<double>()*cm, tampMat, "Tamper");
-
     // Create HE
     logicHE = GetLayer(json_data["HE"]["inner"].get<double>()*cm, json_data["HE"]["outer"].get<double>()*cm, TNT, "HE");
 
+    // Create radiation case
+    logicRadiationCase = GetLayer(json_data["RadiationCase"]["inner"].get<double>()*cm, json_data["RadiationCase"]["outer"].get<double>()*cm, casingMat, "RadiationCase");
+
     // Create casing
     logicCasing = GetLayer(json_data["Casing"]["inner"].get<double>()*cm, json_data["Casing"]["outer"].get<double>()*cm, casingMat, "Casing");
-
-    // Create shield
-    //logicShield = GetLayer(json_data["Shield"]["inner"].get<double>()*cm, json_data["Shield"]["outer"].get<double>()*cm, shieldMat, "Shield");
-
-
-    // Create Detector
-    G4double detectorRadiusInner = 20. * cm;
-    G4double detectorRadiusOuter = 20.01 * cm;
-
-    G4Sphere* solidDetector = new G4Sphere("solidDetector", detectorRadiusInner, detectorRadiusOuter, 0., 360. * deg, 0., 180.*deg);
-    logicDetector = new G4LogicalVolume(solidDetector, worldMat, "logicDetector");
-    G4VPhysicalVolume* physDetector = new G4PVPlacement(nullptr, G4ThreeVector(0.,0.,0.), logicDetector, "physDetector", logicWorld, 0, checkOverlaps);
-    
-    // Visuals
-    G4VisAttributes *detVisAtt = new G4VisAttributes(G4Colour(1., 0., 0., 0.1));
-    detVisAtt->SetForceSolid(true);
-    logicDetector->SetVisAttributes(detVisAtt);
-
 
     return physWorld;
 }
@@ -223,47 +204,31 @@ void PMDetectorConstruction::ConstructSDandField()
 {
     auto SDManager = G4SDManager::GetSDMpointer();
 
-    // Define the Sensitive Detectors
-    auto SDSource = new PMSensitiveDetector("SDSource");
-    auto SDReflector = new PMSensitiveDetector("SDReflector");
-    auto SDTamper = new PMSensitiveDetector("SDTamper");
-    auto SDHE = new PMSensitiveDetector("SDHE");
-    auto SDCasing = new PMSensitiveDetector("SDCasing");
-    auto SDShield = new PMSensitiveDetector("SDShield");
-    auto SDDetector = new PMSensitiveDetector("SDDetector");
-
-
-    // Add the SDs to the SDManager
-    SDManager->AddNewDetector(SDSource);
-    SDManager->AddNewDetector(SDReflector);
-    SDManager->AddNewDetector(SDTamper);
-    SDManager->AddNewDetector(SDHE);
-    SDManager->AddNewDetector(SDCasing);
-    SDManager->AddNewDetector(SDShield);
-    SDManager->AddNewDetector(SDDetector);
-
-
-    // Apply the respective SD to each logic volume
-    if (logicSource != nullptr){
-        logicSource->SetSensitiveDetector(SDSource);
+    // Create, Initiate and Apply the respective SD to each logic volume
+    if (logicCore != nullptr){
+        auto SDCore = new PMSensitiveDetector("SDCore");
+        SDManager->AddNewDetector(SDCore);
+        logicCore->SetSensitiveDetector(SDCore);
     }
     if (logicReflector != nullptr){
+        auto SDReflector = new PMSensitiveDetector("SDReflector");
+        SDManager->AddNewDetector(SDReflector);
         logicReflector->SetSensitiveDetector(SDReflector);
     }
-    if (logicTamper != nullptr){
-        logicTamper->SetSensitiveDetector(SDTamper);
-    }     
     if (logicHE != nullptr){
+        auto SDHE = new PMSensitiveDetector("SDHE");
+        SDManager->AddNewDetector(SDHE);
         logicHE->SetSensitiveDetector(SDHE);
-    }         
+    }   
+    if (logicRadiationCase != nullptr){
+        auto SDRadiationCasing = new PMSensitiveDetector("SDRadiationCasing");
+        SDManager->AddNewDetector(SDRadiationCasing);
+        logicRadiationCase->SetSensitiveDetector(SDRadiationCasing);
+    }     
     if (logicCasing != nullptr){
+        auto SDCasing = new PMSensitiveDetector("SDCasing");
+        SDManager->AddNewDetector(SDCasing);
         logicCasing->SetSensitiveDetector(SDCasing);
     }     
-    if (logicShield != nullptr){
-        logicShield->SetSensitiveDetector(SDShield);
-    }     
-    if (logicDetector != nullptr){
-        logicDetector->SetSensitiveDetector(SDDetector);
-    }   
 
 }

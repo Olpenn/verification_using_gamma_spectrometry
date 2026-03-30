@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/olovrahm/programs/Geant4-test
+CMAKE_SOURCE_DIR = /home/olovrahm/programs/Verification
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/olovrahm/programs/Geant4-test/build
+CMAKE_BINARY_DIR = /home/olovrahm/programs/Verification/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/sim.dir/depend.make
@@ -72,100 +72,100 @@ include CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/sim.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/sim.cc.o: ../sim.cc
 CMakeFiles/sim.dir/sim.cc.o: CMakeFiles/sim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olovrahm/programs/Geant4-test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/sim.dir/sim.cc.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sim.dir/sim.cc.o -MF CMakeFiles/sim.dir/sim.cc.o.d -o CMakeFiles/sim.dir/sim.cc.o -c /home/olovrahm/programs/Geant4-test/sim.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olovrahm/programs/Verification/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/sim.dir/sim.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sim.dir/sim.cc.o -MF CMakeFiles/sim.dir/sim.cc.o.d -o CMakeFiles/sim.dir/sim.cc.o -c /home/olovrahm/programs/Verification/sim.cc
 
 CMakeFiles/sim.dir/sim.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sim.dir/sim.cc.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olovrahm/programs/Geant4-test/sim.cc > CMakeFiles/sim.dir/sim.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olovrahm/programs/Verification/sim.cc > CMakeFiles/sim.dir/sim.cc.i
 
 CMakeFiles/sim.dir/sim.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim.dir/sim.cc.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olovrahm/programs/Geant4-test/sim.cc -o CMakeFiles/sim.dir/sim.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olovrahm/programs/Verification/sim.cc -o CMakeFiles/sim.dir/sim.cc.s
 
 CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.o: ../src/MyPrimaryGeneratorAction.cc
 CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.o: CMakeFiles/sim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olovrahm/programs/Geant4-test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.o -MF CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.o.d -o CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.o -c /home/olovrahm/programs/Geant4-test/src/MyPrimaryGeneratorAction.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olovrahm/programs/Verification/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.o -MF CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.o.d -o CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.o -c /home/olovrahm/programs/Verification/src/MyPrimaryGeneratorAction.cc
 
 CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olovrahm/programs/Geant4-test/src/MyPrimaryGeneratorAction.cc > CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olovrahm/programs/Verification/src/MyPrimaryGeneratorAction.cc > CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.i
 
 CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olovrahm/programs/Geant4-test/src/MyPrimaryGeneratorAction.cc -o CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olovrahm/programs/Verification/src/MyPrimaryGeneratorAction.cc -o CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.s
 
 CMakeFiles/sim.dir/src/PMActionInitialization.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/PMActionInitialization.cc.o: ../src/PMActionInitialization.cc
 CMakeFiles/sim.dir/src/PMActionInitialization.cc.o: CMakeFiles/sim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olovrahm/programs/Geant4-test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/sim.dir/src/PMActionInitialization.cc.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sim.dir/src/PMActionInitialization.cc.o -MF CMakeFiles/sim.dir/src/PMActionInitialization.cc.o.d -o CMakeFiles/sim.dir/src/PMActionInitialization.cc.o -c /home/olovrahm/programs/Geant4-test/src/PMActionInitialization.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olovrahm/programs/Verification/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/sim.dir/src/PMActionInitialization.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sim.dir/src/PMActionInitialization.cc.o -MF CMakeFiles/sim.dir/src/PMActionInitialization.cc.o.d -o CMakeFiles/sim.dir/src/PMActionInitialization.cc.o -c /home/olovrahm/programs/Verification/src/PMActionInitialization.cc
 
 CMakeFiles/sim.dir/src/PMActionInitialization.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sim.dir/src/PMActionInitialization.cc.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olovrahm/programs/Geant4-test/src/PMActionInitialization.cc > CMakeFiles/sim.dir/src/PMActionInitialization.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olovrahm/programs/Verification/src/PMActionInitialization.cc > CMakeFiles/sim.dir/src/PMActionInitialization.cc.i
 
 CMakeFiles/sim.dir/src/PMActionInitialization.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim.dir/src/PMActionInitialization.cc.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olovrahm/programs/Geant4-test/src/PMActionInitialization.cc -o CMakeFiles/sim.dir/src/PMActionInitialization.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olovrahm/programs/Verification/src/PMActionInitialization.cc -o CMakeFiles/sim.dir/src/PMActionInitialization.cc.s
 
 CMakeFiles/sim.dir/src/PMDetectorConstruction.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/PMDetectorConstruction.cc.o: ../src/PMDetectorConstruction.cc
 CMakeFiles/sim.dir/src/PMDetectorConstruction.cc.o: CMakeFiles/sim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olovrahm/programs/Geant4-test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/sim.dir/src/PMDetectorConstruction.cc.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sim.dir/src/PMDetectorConstruction.cc.o -MF CMakeFiles/sim.dir/src/PMDetectorConstruction.cc.o.d -o CMakeFiles/sim.dir/src/PMDetectorConstruction.cc.o -c /home/olovrahm/programs/Geant4-test/src/PMDetectorConstruction.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olovrahm/programs/Verification/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/sim.dir/src/PMDetectorConstruction.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sim.dir/src/PMDetectorConstruction.cc.o -MF CMakeFiles/sim.dir/src/PMDetectorConstruction.cc.o.d -o CMakeFiles/sim.dir/src/PMDetectorConstruction.cc.o -c /home/olovrahm/programs/Verification/src/PMDetectorConstruction.cc
 
 CMakeFiles/sim.dir/src/PMDetectorConstruction.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sim.dir/src/PMDetectorConstruction.cc.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olovrahm/programs/Geant4-test/src/PMDetectorConstruction.cc > CMakeFiles/sim.dir/src/PMDetectorConstruction.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olovrahm/programs/Verification/src/PMDetectorConstruction.cc > CMakeFiles/sim.dir/src/PMDetectorConstruction.cc.i
 
 CMakeFiles/sim.dir/src/PMDetectorConstruction.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim.dir/src/PMDetectorConstruction.cc.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olovrahm/programs/Geant4-test/src/PMDetectorConstruction.cc -o CMakeFiles/sim.dir/src/PMDetectorConstruction.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olovrahm/programs/Verification/src/PMDetectorConstruction.cc -o CMakeFiles/sim.dir/src/PMDetectorConstruction.cc.s
 
 CMakeFiles/sim.dir/src/PMPhyscsList.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/PMPhyscsList.cc.o: ../src/PMPhyscsList.cc
 CMakeFiles/sim.dir/src/PMPhyscsList.cc.o: CMakeFiles/sim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olovrahm/programs/Geant4-test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/sim.dir/src/PMPhyscsList.cc.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sim.dir/src/PMPhyscsList.cc.o -MF CMakeFiles/sim.dir/src/PMPhyscsList.cc.o.d -o CMakeFiles/sim.dir/src/PMPhyscsList.cc.o -c /home/olovrahm/programs/Geant4-test/src/PMPhyscsList.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olovrahm/programs/Verification/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/sim.dir/src/PMPhyscsList.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sim.dir/src/PMPhyscsList.cc.o -MF CMakeFiles/sim.dir/src/PMPhyscsList.cc.o.d -o CMakeFiles/sim.dir/src/PMPhyscsList.cc.o -c /home/olovrahm/programs/Verification/src/PMPhyscsList.cc
 
 CMakeFiles/sim.dir/src/PMPhyscsList.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sim.dir/src/PMPhyscsList.cc.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olovrahm/programs/Geant4-test/src/PMPhyscsList.cc > CMakeFiles/sim.dir/src/PMPhyscsList.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olovrahm/programs/Verification/src/PMPhyscsList.cc > CMakeFiles/sim.dir/src/PMPhyscsList.cc.i
 
 CMakeFiles/sim.dir/src/PMPhyscsList.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim.dir/src/PMPhyscsList.cc.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olovrahm/programs/Geant4-test/src/PMPhyscsList.cc -o CMakeFiles/sim.dir/src/PMPhyscsList.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olovrahm/programs/Verification/src/PMPhyscsList.cc -o CMakeFiles/sim.dir/src/PMPhyscsList.cc.s
 
 CMakeFiles/sim.dir/src/PMRunAction.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/PMRunAction.cc.o: ../src/PMRunAction.cc
 CMakeFiles/sim.dir/src/PMRunAction.cc.o: CMakeFiles/sim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olovrahm/programs/Geant4-test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/sim.dir/src/PMRunAction.cc.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sim.dir/src/PMRunAction.cc.o -MF CMakeFiles/sim.dir/src/PMRunAction.cc.o.d -o CMakeFiles/sim.dir/src/PMRunAction.cc.o -c /home/olovrahm/programs/Geant4-test/src/PMRunAction.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olovrahm/programs/Verification/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/sim.dir/src/PMRunAction.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sim.dir/src/PMRunAction.cc.o -MF CMakeFiles/sim.dir/src/PMRunAction.cc.o.d -o CMakeFiles/sim.dir/src/PMRunAction.cc.o -c /home/olovrahm/programs/Verification/src/PMRunAction.cc
 
 CMakeFiles/sim.dir/src/PMRunAction.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sim.dir/src/PMRunAction.cc.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olovrahm/programs/Geant4-test/src/PMRunAction.cc > CMakeFiles/sim.dir/src/PMRunAction.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olovrahm/programs/Verification/src/PMRunAction.cc > CMakeFiles/sim.dir/src/PMRunAction.cc.i
 
 CMakeFiles/sim.dir/src/PMRunAction.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim.dir/src/PMRunAction.cc.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olovrahm/programs/Geant4-test/src/PMRunAction.cc -o CMakeFiles/sim.dir/src/PMRunAction.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olovrahm/programs/Verification/src/PMRunAction.cc -o CMakeFiles/sim.dir/src/PMRunAction.cc.s
 
 CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.o: ../src/PMSensitiveDetector.cc
 CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.o: CMakeFiles/sim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olovrahm/programs/Geant4-test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.o -MF CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.o.d -o CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.o -c /home/olovrahm/programs/Geant4-test/src/PMSensitiveDetector.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olovrahm/programs/Verification/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.o -MF CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.o.d -o CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.o -c /home/olovrahm/programs/Verification/src/PMSensitiveDetector.cc
 
 CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olovrahm/programs/Geant4-test/src/PMSensitiveDetector.cc > CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olovrahm/programs/Verification/src/PMSensitiveDetector.cc > CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.i
 
 CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olovrahm/programs/Geant4-test/src/PMSensitiveDetector.cc -o CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olovrahm/programs/Verification/src/PMSensitiveDetector.cc -o CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.s
 
 # Object files for target sim
 sim_OBJECTS = \
@@ -246,7 +246,7 @@ sim: /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/lib/libG4clhep.so
 sim: /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/lib/libG4ptl.so.3.0.0
 sim: /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/lib/libG4zlib.so
 sim: CMakeFiles/sim.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/olovrahm/programs/Geant4-test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable sim"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/olovrahm/programs/Verification/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable sim"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sim.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -258,6 +258,6 @@ CMakeFiles/sim.dir/clean:
 .PHONY : CMakeFiles/sim.dir/clean
 
 CMakeFiles/sim.dir/depend:
-	cd /home/olovrahm/programs/Geant4-test/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/olovrahm/programs/Geant4-test /home/olovrahm/programs/Geant4-test /home/olovrahm/programs/Geant4-test/build /home/olovrahm/programs/Geant4-test/build /home/olovrahm/programs/Geant4-test/build/CMakeFiles/sim.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/olovrahm/programs/Verification/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/olovrahm/programs/Verification /home/olovrahm/programs/Verification /home/olovrahm/programs/Verification/build /home/olovrahm/programs/Verification/build /home/olovrahm/programs/Verification/build/CMakeFiles/sim.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/sim.dir/depend
 

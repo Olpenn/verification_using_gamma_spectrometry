@@ -22,17 +22,13 @@ public:
         const G4ParticleDefinition* particle = track->GetDefinition();
         auto particleType = particle->GetParticleType();
 
-        
-        // Check if it's Pa231 (Protactinium-231)
-        // You need to know the exact particle name used in your physics list
         G4String particleName = particle->GetParticleName();
 
-        /*
-        Option 1:
-        Count the amount of radioactive decays from a particle in ground state, 
-        as soon as the second decay happens, kill all tracks
-        The first decay 
-        */
+        
+        if(particleName == "e-" || particleName == "anti_nu_e") {
+            return fKill;
+        }
+
         G4Ions* ion = (G4Ions*)particle;
 
         // As soon as the daughter particle goes into a non-excited state, set this track to be watched

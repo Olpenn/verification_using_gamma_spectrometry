@@ -32,13 +32,11 @@ G4bool PMSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *)
         G4String enteringVolumeName = aStep->GetPostStepPoint()->GetPhysicalVolume()->GetName();
         
         G4int histID = 
-        exitingVolumeName=="physCore" && enteringVolumeName=="physReflector"      ? 0 :
-        exitingVolumeName=="physReflector" && enteringVolumeName=="physTamper"    ? 1 :
-        exitingVolumeName=="physTamper" && enteringVolumeName=="physHE"           ? 2 :
-        exitingVolumeName=="physHE" && enteringVolumeName=="physCasing"           ? 3 :
-        exitingVolumeName=="physCasing" && enteringVolumeName=="physShield"       ? 4 :
-        exitingVolumeName=="physShield" && enteringVolumeName=="physDetector"     ? 5 :
-        exitingVolumeName=="physDetector" && enteringVolumeName=="physWorld"      ? 6 : -1;
+        exitingVolumeName=="physCore" && enteringVolumeName=="physReflector"        ? 0 :
+        exitingVolumeName=="physReflector" && enteringVolumeName=="physHE"          ? 1 :
+        exitingVolumeName=="physHE" && enteringVolumeName=="physRadiationCase"      ? 2 :
+        exitingVolumeName=="physRadiationCase" && enteringVolumeName=="physCasing"  ? 3 :
+        exitingVolumeName=="physCasing" && enteringVolumeName=="physWorld"          ? 4 : -1;
 
         // If histID = -1, the gamma ray bounces backwards towards the center
         if (histID != -1) {

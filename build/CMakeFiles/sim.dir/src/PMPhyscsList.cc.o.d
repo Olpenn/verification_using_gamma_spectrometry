@@ -1,7 +1,7 @@
 CMakeFiles/sim.dir/src/PMPhyscsList.cc.o: \
- /home/olovrahm/programs/Geant4-test/src/PMPhyscsList.cc \
+ /home/olovrahm/programs/Verification/src/PMPhyscsList.cc \
  /usr/include/stdc-predef.h \
- /home/olovrahm/programs/Geant4-test/include/PMPhysicsList.hh \
+ /home/olovrahm/programs/Verification/include/PMPhysicsList.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4VModularPhysicsList.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4VPhysicsConstructor.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleTable.hh \

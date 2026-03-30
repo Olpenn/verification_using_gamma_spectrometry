@@ -1,7 +1,7 @@
 CMakeFiles/sim.dir/src/PMRunAction.cc.o: \
- /home/olovrahm/programs/Geant4-test/src/PMRunAction.cc \
+ /home/olovrahm/programs/Verification/src/PMRunAction.cc \
  /usr/include/stdc-predef.h \
- /home/olovrahm/programs/Geant4-test/include/PMRunAction.hh \
+ /home/olovrahm/programs/Verification/include/PMRunAction.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4UserRunAction.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4Types.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4GlobalConfig.hh \

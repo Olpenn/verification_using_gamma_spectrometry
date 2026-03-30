@@ -39,11 +39,11 @@
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel ..."
 				}
 			],
 			"type" : "STRING",
-			"value" : "Debug"
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_CACHEFILE_DIR",
@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/olovrahm/programs/Geant4-test/build"
+			"value" : "/home/olovrahm/programs/Verification/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -155,11 +155,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "CXX compiler"
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/g++"
+			"value" : "/usr/bin/c++"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_AR",
@@ -283,11 +283,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "C compiler"
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gcc"
+			"value" : "/usr/bin/cc"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_AR",
@@ -531,11 +531,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "Enable/Disable output of compile commands during generation."
 				}
 			],
 			"type" : "BOOL",
-			"value" : "TRUE"
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_EXTRA_GENERATOR",
@@ -679,7 +679,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/olovrahm/programs/Geant4-test"
+			"value" : "/home/olovrahm/programs/Verification"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -9187,7 +9187,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/olovrahm/programs/Geant4-test/build"
+			"value" : "/home/olovrahm/programs/Verification/build"
 		},
 		{
 			"name" : "sim_IS_TOP_LEVEL",
@@ -9211,7 +9211,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/olovrahm/programs/Geant4-test"
+			"value" : "/home/olovrahm/programs/Verification"
 		}
 	],
 	"kind" : "cache",
