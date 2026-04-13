@@ -412,6 +412,7 @@ CMakeFiles/sim.dir/src/PMActionInitialization.cc.o: \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleTableIterator.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleTable.icc \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/globals.hh \
+ /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4Gamma.hh \
  /home/olovrahm/programs/Verification/include/PMRunAction.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4UserRunAction.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4Run.hh \

@@ -21,8 +21,44 @@ void MyPrimaryGeneratorAction::SetupIonSources() {
     fGPS->ClearAll();
     G4bool core_emission = false;
     G4bool background_emission = true;
+    G4double photon_energy = 0.1857*MeV; 
+    
+    if(photon_energy) {
+        fGPS->AddaSource(1); // Add a source with intensity 1 (the intensity will be scaled later in the analysis stage)
+        G4SingleParticleSource* source = fGPS->GetCurrentSource();
+        source->SetParticleDefinition(G4Gamma::GammaDefinition());
+        source->GetEneDist()->SetMonoEnergy(photon_energy);
+        source->GetPosDist()->SetPosDisType("Volume");
+        source->GetPosDist()->SetPosDisShape("Sphere");
+        // Load variables defined in the python script
+        // Open file with error checking
+        std::ifstream geometry_variables("../geometry_variables.json");
+        if (!geometry_variables.is_open()) {
+            throw std::runtime_error("Could not open file ../geometry_variables.json");
+        }
+        // Parse JSON
+        json geometry_data;
+        geometry_variables >> geometry_data;
+        if(core_emission) {
+             G4double coreOuterRadius = geometry_data["Core"]["outer"].get<double>()*cm;
+             source->GetPosDist()->SetRadius(coreOuterRadius);
+             source->GetPosDist()->ConfineSourceToVolume("physCore");
+        } 
+        if(geometry_data.contains("RadiationCase")) {
+            G4double coreOuterRadius = geometry_data["RadiationCase"]["outer"].get<double>()*cm;
+            source->GetPosDist()->SetRadius(coreOuterRadius);
+            source->GetPosDist()->ConfineSourceToVolume("physRadiationCase");
+        } else if (geometry_data.contains("Tamper")) {
+            G4double tamperOuterRadius = geometry_data["Tamper"]["outer"].get<double>()*cm;
+            G4cout << "Setting photon source radius to " << tamperOuterRadius << std::endl;
+            source->GetPosDist()->SetRadius(tamperOuterRadius);
+            source->GetPosDist()->ConfineSourceToVolume("physTamper");
+        }
 
-    if(core_emission) {
+        // Set isotropic direction
+        source->GetAngDist()->SetAngDistType("iso");
+    }
+    else if(core_emission) {
         // Open file with error checking
         std::ifstream activities_core("../core_activities.json");
         if (!activities_core.is_open()) {
@@ -102,7 +138,7 @@ void MyPrimaryGeneratorAction::SetupIonSources() {
             source->GetAngDist()->SetAngDistType("iso");
         }
     }
-    if(background_emission) {
+    else if(background_emission) {
         // Open file with error checking
         std::ifstream activities_background("../background_activities.json");
         if (!activities_background.is_open()) {

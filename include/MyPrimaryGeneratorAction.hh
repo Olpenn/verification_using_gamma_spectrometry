@@ -5,6 +5,7 @@
 #include "G4GeneralParticleSource.hh"
 #include "G4ParticleTable.hh"
 #include "globals.hh"
+#include "G4Gamma.hh"
 
 class G4Event;
 
