@@ -181,21 +181,38 @@ G4VPhysicalVolume *PMDetectorConstruction::Construct()
     logicWorld = new G4LogicalVolume(solidWorld, worldMat, "logicalWorld");
     G4VPhysicalVolume *physWorld = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), logicWorld, "physWorld", 0, false, 0, checkOverlaps);
 
+    // Look in the json file if the different layers should be craeated. The layers that is looked after are, in order:
+    // Core, Reflector, Tamper, HE, RadiationCase and Casing.
 
     // Create core
-    logicCore = GetLayer(json_data["Core"]["inner"].get<double>()*cm, json_data["Core"]["outer"].get<double>()*cm, sourceMat, "Core");
+    if (json_data.contains("Core")) {
+        logicCore = GetLayer(json_data["Core"]["inner"].get<double>()*cm, json_data["Core"]["outer"].get<double>()*cm, sourceMat, "Core");
+    }
 
-    // Create reflector
-    logicReflector = GetLayer(json_data["Reflector"]["inner"].get<double>()*cm, json_data["Reflector"]["outer"].get<double>()*cm, refMat, "Reflector");
+    // Create Reflector
+    if (json_data.contains("Reflector")) {
+        logicReflector = GetLayer(json_data["Reflector"]["inner"].get<double>()*cm, json_data["Reflector"]["outer"].get<double>()*cm, refMat, "Reflector");
+    }
+
+    // Create Tamper
+    if (json_data.contains("Tamper")) {
+        logicTamper = GetLayer(json_data["Tamper"]["inner"].get<double>()*cm, json_data["Tamper"]["outer"].get<double>()*cm, tampMat, "Tamper");
+    }
 
     // Create HE
-    logicHE = GetLayer(json_data["HE"]["inner"].get<double>()*cm, json_data["HE"]["outer"].get<double>()*cm, TNT, "HE");
+    if (json_data.contains("HE")) {
+        logicHE = GetLayer(json_data["HE"]["inner"].get<double>()*cm, json_data["HE"]["outer"].get<double>()*cm, TNT, "HE");
+    }
 
     // Create radiation case
-    logicRadiationCase = GetLayer(json_data["RadiationCase"]["inner"].get<double>()*cm, json_data["RadiationCase"]["outer"].get<double>()*cm, casingMat, "RadiationCase");
+    if (json_data.contains("RadiationCase")) {
+        logicRadiationCase = GetLayer(json_data["RadiationCase"]["inner"].get<double>()*cm, json_data["RadiationCase"]["outer"].get<double>()*cm, casingMat, "RadiationCase");
+    }
 
     // Create casing
-    logicCasing = GetLayer(json_data["Casing"]["inner"].get<double>()*cm, json_data["Casing"]["outer"].get<double>()*cm, casingMat, "Casing");
+    if (json_data.contains("Casing")) {
+        logicCasing = GetLayer(json_data["Casing"]["inner"].get<double>()*cm, json_data["Casing"]["outer"].get<double>()*cm, casingMat, "Casing");
+    }
 
     return physWorld;
 }
@@ -214,6 +231,11 @@ void PMDetectorConstruction::ConstructSDandField()
         auto SDReflector = new PMSensitiveDetector("SDReflector");
         SDManager->AddNewDetector(SDReflector);
         logicReflector->SetSensitiveDetector(SDReflector);
+    }
+    if (logicTamper != nullptr){
+        auto SDTamper = new PMSensitiveDetector("SDTamper");
+        SDManager->AddNewDetector(SDTamper);
+        logicTamper->SetSensitiveDetector(SDTamper);
     }
     if (logicHE != nullptr){
         auto SDHE = new PMSensitiveDetector("SDHE");

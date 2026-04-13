@@ -44,6 +44,7 @@ private:
     // Declare the logicvolumes in the header to access it in differnet methods later.
     G4LogicalVolume* logicCore = nullptr;
     G4LogicalVolume* logicReflector = nullptr;
+    G4LogicalVolume* logicTamper = nullptr;
     G4LogicalVolume* logicHE = nullptr;
     G4LogicalVolume* logicRadiationCase = nullptr;
     G4LogicalVolume* logicCasing = nullptr;

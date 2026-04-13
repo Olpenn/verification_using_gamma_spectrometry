@@ -25,7 +25,6 @@ G4bool PMSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *)
     G4double ke = postStep->GetKineticEnergy();
 
     auto analysis = G4AnalysisManager::Instance();
-    G4String exitingVolumeName = aStep->GetPreStepPoint()->GetPhysicalVolume()->GetName();
 
     if (trackDefinition == G4Gamma::Definition() && aStep->GetPostStepPoint()->GetStepStatus() == fGeomBoundary) {
         G4String exitingVolumeName = aStep->GetPreStepPoint()->GetPhysicalVolume()->GetName();
@@ -33,10 +32,13 @@ G4bool PMSensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *)
         
         G4int histID = 
         exitingVolumeName=="physCore" && enteringVolumeName=="physReflector"        ? 0 :
+        exitingVolumeName=="physReflector" && enteringVolumeName=="physTamper"      ? 1 :
         exitingVolumeName=="physReflector" && enteringVolumeName=="physHE"          ? 1 :
-        exitingVolumeName=="physHE" && enteringVolumeName=="physRadiationCase"      ? 2 :
-        exitingVolumeName=="physRadiationCase" && enteringVolumeName=="physCasing"  ? 3 :
-        exitingVolumeName=="physCasing" && enteringVolumeName=="physWorld"          ? 4 : -1;
+        exitingVolumeName=="physTamper" && enteringVolumeName=="physHE"             ? 2 :
+        exitingVolumeName=="physHE" && enteringVolumeName=="physRadiationCase"      ? 3 :
+        exitingVolumeName=="physHE" && enteringVolumeName=="physCasing"             ? 3 :
+        exitingVolumeName=="physRadiationCase" && enteringVolumeName=="physCasing"  ? 4 :
+        exitingVolumeName=="physCasing" && enteringVolumeName=="physWorld"          ? 5 : -1;
 
         // If histID = -1, the gamma ray bounces backwards towards the center
         if (histID != -1) {

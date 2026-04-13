@@ -20,18 +20,18 @@ void MyPrimaryGeneratorAction::SetupIonSources() {
     // Clear default source
     fGPS->ClearAll();
     G4bool core_emission = false;
-    G4bool radiationCase_emission = true;
+    G4bool background_emission = true;
 
     if(core_emission) {
         // Open file with error checking
-        std::ifstream activities_file("../core_activities.json");
-        if (!activities_file.is_open()) {
+        std::ifstream activities_core("../core_activities.json");
+        if (!activities_core.is_open()) {
             throw std::runtime_error("Could not open file '../core_activities.json'");
         }
         
         // Parse JSON
-        json json_data;
-        activities_file >> json_data;
+        json j_activities_core;
+        activities_core >> j_activities_core;
         G4NistManager* nist = G4NistManager::Instance();
         int z;
         int a;
@@ -42,7 +42,7 @@ void MyPrimaryGeneratorAction::SetupIonSources() {
         G4double energy;
 
         // Add each nuclide as a separate source
-        for (auto& [key, value] : json_data.items()) {
+        for (auto& [key, value] : j_activities_core.items()) {
             a_string.erase();
             symbol.erase();
 
@@ -102,16 +102,16 @@ void MyPrimaryGeneratorAction::SetupIonSources() {
             source->GetAngDist()->SetAngDistType("iso");
         }
     }
-    if(radiationCase_emission) {
+    if(background_emission) {
         // Open file with error checking
-        std::ifstream activities_file("../radiationCase_activities.json");
-        if (!activities_file.is_open()) {
-            throw std::runtime_error("Could not open file '../radiationCase_activities.json'");
+        std::ifstream activities_background("../background_activities.json");
+        if (!activities_background.is_open()) {
+            throw std::runtime_error("Could not open file '../background_activities.json'");
         }
         
         // Parse JSON
-        json json_data;
-        activities_file >> json_data;
+        json j_activities_background;
+        activities_background >> j_activities_background;
 
         // Initialize varables
         G4NistManager* nist = G4NistManager::Instance();
@@ -123,7 +123,7 @@ void MyPrimaryGeneratorAction::SetupIonSources() {
         G4double energy;
 
         // Add each nuclide as a separate source
-        for (auto& [key, value] : json_data.items()) {
+        for (auto& [key, value] : j_activities_background.items()) {
             a_string.erase();
             symbol.erase();
 
@@ -174,10 +174,16 @@ void MyPrimaryGeneratorAction::SetupIonSources() {
             // Parse JSON
             json geometry_data;
             geometry_variables >> geometry_data;
-            G4double coreOuterRadius = geometry_data["RadiationCase"]["outer"].get<double>()*cm;
-            source->GetPosDist()->SetRadius(coreOuterRadius);
-            source->GetPosDist()->ConfineSourceToVolume("physRadiationCase");
-            
+            if(geometry_data.contains("RadiationCase")) {
+                G4double coreOuterRadius = geometry_data["RadiationCase"]["outer"].get<double>()*cm;
+                source->GetPosDist()->SetRadius(coreOuterRadius);
+                source->GetPosDist()->ConfineSourceToVolume("physRadiationCase");
+            } else if (geometry_data.contains("Tamper")) {
+                G4double tamperOuterRadius = geometry_data["Tamper"]["outer"].get<double>()*cm;
+                G4cout << "Setting background source radius to " << tamperOuterRadius << std::endl;
+                source->GetPosDist()->SetRadius(tamperOuterRadius);
+                source->GetPosDist()->ConfineSourceToVolume("physTamper");
+            }
 
             // Set isotropic direction
             source->GetAngDist()->SetAngDistType("iso");

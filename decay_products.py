@@ -15,21 +15,18 @@ Radiation Case - DU
 Casing - Al
 
 '''
-U_density = .0191     # Density of uranium in kg/cm3, use this for both the core and shield
-
-mass_core = 12.       # Mass of the core in kg
-mass_shield = 4.     # Mass of the shield in kg
-
 
 
 # ----------- Variables --------------
 # All numbers are in the unit cm
 
 space_thickness = 7. - 1.23
-reflector_thickness = 0.5
-HE_thickness = 6.
-radiationCase_thickness = 0.5
-casing_thickness = 0.7
+core_thickness = 1.23
+reflector_thickness = 1.
+tamper_thickness = 3.
+HE_thickness = 10.
+radiationCase_thickness = 0.
+casing_thickness = 1.
 # ----------- Variables --------------
 
 
@@ -39,34 +36,51 @@ geometry_variables = dict()
 
 # ------------ Fissile material in the core ------------
 # This is dependent on the mass of the fissile material 
-r_core_inner = space_thickness
-volume_core = mass_core / U_density     
-r_core_outer = (3/(4*math.pi) * volume_core + r_core_inner**3)**(1/3) # Use the volume of the fissile material to calculate the outer radius
-geometry_variables["Core"] = {"inner": float(r_core_inner), "outer" : float(r_core_outer)}
+if core_thickness:
+    r_core_inner = space_thickness    
+    r_core_outer = r_core_inner + core_thickness
+    geometry_variables["Core"] = {"inner": r_core_inner, "outer" : r_core_outer}
 
 
 # ---------------- Reflector --------------------------
-r_reflector_inner = r_core_outer
-r_reflector_outer = r_reflector_inner + reflector_thickness
-geometry_variables["Reflector"] = {"inner": r_reflector_inner, "outer" : r_reflector_outer}
+if reflector_thickness:
+    r_reflector_inner = r_core_outer
+    r_reflector_outer = r_reflector_inner + reflector_thickness
+    geometry_variables["Reflector"] = {"inner": r_reflector_inner, "outer" : r_reflector_outer}
+
+
+# ---------------- Tamper --------------------------
+if tamper_thickness:
+    r_tamper_inner = r_reflector_outer
+    r_tamper_outer = r_tamper_inner + tamper_thickness
+    geometry_variables["Tamper"] = {"inner": r_tamper_inner, "outer" : r_tamper_outer}
 
 
 # ------------- High Explosive ------------------------ 
-r_HE_inner = r_reflector_outer
-r_HE_outer = r_HE_inner + HE_thickness
-geometry_variables["HE"] = {"inner": r_HE_inner, "outer" : r_HE_outer}
+if HE_thickness:
+    if tamper_thickness:
+        r_HE_inner = r_tamper_outer
+    else:
+        r_HE_inner = r_reflector_outer
+    r_HE_outer = r_HE_inner + HE_thickness
+    geometry_variables["HE"] = {"inner": r_HE_inner, "outer" : r_HE_outer}
 
 
 # -------------- Radiation Case ----------------------
-r_radiationCase_inner = r_HE_outer
-r_radiationCase_outer = r_radiationCase_inner + radiationCase_thickness
-geometry_variables["RadiationCase"] = {"inner": r_radiationCase_inner, "outer" : r_radiationCase_outer}
+if radiationCase_thickness:
+    r_radiationCase_inner = r_HE_outer
+    r_radiationCase_outer = r_radiationCase_inner + radiationCase_thickness
+    geometry_variables["RadiationCase"] = {"inner": r_radiationCase_inner, "outer" : r_radiationCase_outer}
 
 
 # ----------------- Casing ---------------------------
-r_casing_inner = r_radiationCase_outer
-r_casing_outer = r_casing_inner + casing_thickness
-geometry_variables["Casing"] = {"inner": r_casing_inner, "outer" : r_casing_outer}
+if casing_thickness:
+    if radiationCase_thickness:
+        r_casing_inner = r_radiationCase_outer
+    else:
+        r_casing_inner = r_HE_outer
+    r_casing_outer = r_casing_inner + casing_thickness
+    geometry_variables["Casing"] = {"inner": r_casing_inner, "outer" : r_casing_outer}
 
 
 # ------------- Load into json file ------------------
@@ -80,20 +94,31 @@ Calculate the activity and relative abundance from the core and the shield indep
 
 '''
 
+U_density = .0191     # Density of uranium in kg/cm3, use this for both the core and shield
+mass_core = 4/3 * math.pi * (r_core_outer**3 - r_core_inner**3) * U_density
+
+if tamper_thickness:
+    mass_tamper = 4/3 * math.pi * (r_tamper_outer**3 - r_tamper_inner**3) * U_density
+    background = rd.Inventory({"U-235" : 0.007 * mass_tamper, "U-238" : 0.993 * mass_tamper}, 'kg')     # Natural Uranium
+
+elif radiationCase_thickness:
+    mass_radiationCase = 4/3 * math.pi * (r_radiationCase_outer**3 - r_radiationCase_inner**3) * U_density
+    background = rd.Inventory({"U-235" : 0.0072 * mass_radiationCase, "U-238" : 0.9928 * mass_radiationCase, "U-234" : 0.000057}, 'kg')     # Natural Uranium
+
+
 # Set a specific start
-core = rd.Inventory({"U-235" : 0.9 * mass_core, "U-238": 0.1 * mass_core}, 'kg')                # Weapons grade Uranium
-radiationCase = rd.Inventory({"U-235" : 0.007 * mass_shield, "U-238" : 0.993 * mass_shield}, 'kg')     # Natural Uranium
+core = rd.Inventory({"U-235" : 0.935 * mass_core, "U-238": 0.055 * mass_core, "U-234": 0.01 * mass_core}, 'kg')                # Weapons grade Uranium
 
 
 # Calculate ingrowth after a certaion time
-years = 2000.0
+years = 20.0
 core_ingrowth = core.decay(years, 'y')
-radiationCase_ingrowth = radiationCase.decay(years, 'y')
+background_ingrowth = background.decay(years, 'y')
 
 
 # Store the activities in a json file
 core_activities = dict()
-radiationCase_activities = dict()
+background_activities = dict()
 
 '''
 There are two possible sources where gamma rays can originate from, either the core with weapons grade Uranium
@@ -112,13 +137,12 @@ with open("core_activities.json", "w") as f:
 
 
 
-# Calculate radiation case activites
-for nuclide in radiationCase_ingrowth.nuclides:
+# Calculate background activites
+for nuclide in background_ingrowth.nuclides:
     nuclideName = str(nuclide)
-    radiationCase_activities[nuclideName] = float(radiationCase_ingrowth.activities('Bq')[nuclideName])
+    background_activities[nuclideName] = float(background_ingrowth.activities('Bq')[nuclideName])
 
-with open("radiationCase_activities.json", "w") as f:
-    json.dump(radiationCase_activities, f, indent=4)
-
+with open("background_activities.json", "w") as f:
+    json.dump(background_activities, f, indent=4)
 
 

@@ -1,0 +1,4 @@
+1ms = 29628271 decays from core
+Regular Fetter model
+
+20 years ingrowth
