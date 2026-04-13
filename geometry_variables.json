@@ -7,16 +7,16 @@
         "inner": 7.0,
         "outer": 8.0
     },
-    "Tamper": {
-        "inner": 8.0,
-        "outer": 11.0
-    },
     "HE": {
-        "inner": 11.0,
-        "outer": 21.0
+        "inner": 8.0,
+        "outer": 18.0
+    },
+    "RadiationCase": {
+        "inner": 18.0,
+        "outer": 18.2
     },
     "Casing": {
-        "inner": 21.0,
-        "outer": 22.0
+        "inner": 18.2,
+        "outer": 18.7
     }
 }

@@ -19,14 +19,18 @@ Casing - Al
 
 # ----------- Variables --------------
 # All numbers are in the unit cm
+# The code is designed so that layers can take two different configurations:
+# 1. Air - Core - Reflector - Tamper - HE -                  Casing
+# 2. Air - Core - Reflector -          HE - Radiation Case - Casing
+# The way to swich between these two configuration is to set either the Tamper thickness or the Radiation Case thickness to 0.
 
 space_thickness = 7. - 1.23
 core_thickness = 1.23
 reflector_thickness = 1.
-tamper_thickness = 3.
+tamper_thickness = 0.
 HE_thickness = 10.
-radiationCase_thickness = 0.
-casing_thickness = 1.
+radiationCase_thickness = 0.2
+casing_thickness = 0.5
 # ----------- Variables --------------
 
 
@@ -99,15 +103,15 @@ mass_core = 4/3 * math.pi * (r_core_outer**3 - r_core_inner**3) * U_density
 
 if tamper_thickness:
     mass_tamper = 4/3 * math.pi * (r_tamper_outer**3 - r_tamper_inner**3) * U_density
-    background = rd.Inventory({"U-235" : 0.007 * mass_tamper, "U-238" : 0.993 * mass_tamper}, 'kg')     # Natural Uranium
+    background = rd.Inventory({"U-238" : mass_tamper}, 'kg')     # Depleted Uranium
 
 elif radiationCase_thickness:
     mass_radiationCase = 4/3 * math.pi * (r_radiationCase_outer**3 - r_radiationCase_inner**3) * U_density
-    background = rd.Inventory({"U-235" : 0.0072 * mass_radiationCase, "U-238" : 0.9928 * mass_radiationCase, "U-234" : 0.000057}, 'kg')     # Natural Uranium
+    background = rd.Inventory({"U-238" : 0.998 * mass_radiationCase, "U-235" : 0.002 * mass_radiationCase}, 'kg')     # Depleted Uranium
 
 
 # Set a specific start
-core = rd.Inventory({"U-235" : 0.935 * mass_core, "U-238": 0.055 * mass_core, "U-234": 0.01 * mass_core}, 'kg')                # Weapons grade Uranium
+core = rd.Inventory({"U-235" : 0.935 * mass_core, "U-238": 0.055 * mass_core, "U-234": 0.01 * mass_core}, 'kg') # HEU              # Weapons grade Uranium
 
 
 # Calculate ingrowth after a certaion time
