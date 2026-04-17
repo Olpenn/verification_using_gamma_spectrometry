@@ -406,6 +406,7 @@ CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.o: \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ApplicationState.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4UIparameter.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4GeneralParticleSourceData.hh \
+ /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleGun.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleTable.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleTableIterator.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleTable.icc \
@@ -482,4 +483,6 @@ CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.o: \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/CLHEP/Random/RandPoisson.icc \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/CLHEP/Random/RandPoissonQ.icc \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/CLHEP/Random/RandStudentT.h \
- /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/CLHEP/Random/RandStudentT.icc
+ /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/CLHEP/Random/RandStudentT.icc \
+ /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4RandomDirection.hh \
+ /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/Randomize.hh

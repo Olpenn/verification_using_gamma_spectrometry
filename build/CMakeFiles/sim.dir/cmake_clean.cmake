@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "../run/sim"
+  "../run/sim.pdb"
   "CMakeFiles/sim.dir/sim.cc.o"
   "CMakeFiles/sim.dir/sim.cc.o.d"
   "CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.o"
@@ -13,8 +15,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/sim.dir/src/PMRunAction.cc.o.d"
   "CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.o"
   "CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.o.d"
-  "sim"
-  "sim.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

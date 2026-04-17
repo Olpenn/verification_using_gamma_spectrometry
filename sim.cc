@@ -38,8 +38,6 @@ int main(int argc, char** argv)
 
     runManager->Initialize();
     
-
-    
     primaryAction->SetupIonSources(); 
 
 

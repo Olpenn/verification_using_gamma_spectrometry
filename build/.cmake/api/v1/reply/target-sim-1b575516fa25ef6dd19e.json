@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "sim"
+			"path" : "/home/olovrahm/programs/Verification/run/sim"
 		}
 	],
 	"backtrace" : 1,
@@ -26,31 +26,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 51,
+				"line" : 32,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 53,
+				"line" : 34,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 26,
-				"parent" : 0
-			},
-			{
-				"command" : 2,
-				"file" : 0,
-				"line" : 29,
-				"parent" : 0
-			},
-			{
-				"command" : 2,
-				"file" : 0,
-				"line" : 41,
+				"line" : 22,
 				"parent" : 0
 			}
 		]
@@ -135,23 +123,11 @@
 			[
 				{
 					"backtrace" : 3,
-					"path" : "/home/olovrahm/root/include"
-				},
-				{
-					"backtrace" : 4,
-					"path" : "/home/olovrahm/root/include/ROOT"
-				},
-				{
-					"backtrace" : 5,
 					"path" : "/home/olovrahm/programs/Verification/include"
 				},
 				{
-					"backtrace" : 5,
+					"backtrace" : 3,
 					"path" : "/home/olovrahm/programs/Verification/-W -Wall -pedantic -Wno-non-virtual-dtor -Wno-long-long -Wwrite-strings -Wpointer-arith -Woverloaded-virtual -Wno-variadic-macros -Wshadow -pipe -pthread -ftls-model=initial-exec -std=c++17"
-				},
-				{
-					"backtrace" : 5,
-					"path" : "/home/olovrahm/programs/Verification/-pipe -fsigned-char -pthread"
 				},
 				{
 					"backtrace" : 2,
@@ -216,7 +192,7 @@
 				"role" : "flags"
 			},
 			{
-				"fragment" : "-Wl,-rpath,/home/olovrahm/Software/Geant4/geant4-v11.4.0-install/lib:/home/olovrahm/root/lib",
+				"fragment" : "-Wl,-rpath,/home/olovrahm/Software/Geant4/geant4-v11.4.0-install/lib",
 				"role" : "libraries"
 			},
 			{
@@ -317,101 +293,6 @@
 			{
 				"backtrace" : 2,
 				"fragment" : "/home/olovrahm/Software/Geant4/geant4-v11.4.0-install/lib/libG4parmodels.so",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "/home/olovrahm/root/lib/libCore.so",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "/home/olovrahm/root/lib/libImt.so",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "/home/olovrahm/root/lib/libRIO.so",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "/home/olovrahm/root/lib/libNet.so",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "/home/olovrahm/root/lib/libHist.so",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "/home/olovrahm/root/lib/libGraf.so",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "/home/olovrahm/root/lib/libGraf3d.so",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "/home/olovrahm/root/lib/libGpad.so",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "/home/olovrahm/root/lib/libROOTDataFrame.so",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "/home/olovrahm/root/lib/libTree.so",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "/home/olovrahm/root/lib/libTreePlayer.so",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "/home/olovrahm/root/lib/libRint.so",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "/home/olovrahm/root/lib/libPostscript.so",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "/home/olovrahm/root/lib/libMatrix.so",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "/home/olovrahm/root/lib/libPhysics.so",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "/home/olovrahm/root/lib/libMathCore.so",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "/home/olovrahm/root/lib/libThread.so",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "/home/olovrahm/root/lib/libMultiProc.so",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "/home/olovrahm/root/lib/libROOTVecOps.so",
 				"role" : "libraries"
 			},
 			{

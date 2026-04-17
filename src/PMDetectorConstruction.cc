@@ -105,7 +105,7 @@ G4VPhysicalVolume *PMDetectorConstruction::Construct()
 
 
 //--------------- Fissile material, Open the Bateman solution --------------
-    G4Material* sourceMat = nist->FindOrBuildMaterial("G4_U");
+    G4Material* sourceMat = nist->FindOrBuildMaterial("G4_U"); //G4_U
 
 
 //------------------------Neutron reflector---------------------------------
@@ -117,9 +117,9 @@ G4VPhysicalVolume *PMDetectorConstruction::Construct()
 
 
 //-------------------------High Explosive----------------------------------
-    // Create TNT material
+    // Create TATB material
 
-    G4Material* TNT = new G4Material("TNT", 1.65 * g/cm3, 4);
+    G4Material* TATB = new G4Material("TATB", 1.80 * g/cm3, 4);
     
     // Define the required elements
     G4Element* H = nist->FindOrBuildElement("H"); //G4_H
@@ -127,11 +127,11 @@ G4VPhysicalVolume *PMDetectorConstruction::Construct()
     G4Element* N = nist->FindOrBuildElement("N"); //G4_N
     G4Element* O = nist->FindOrBuildElement("O"); //G4_O
 
-    // TNT has (CH3C6H2(NO2)3) which results in:
-    TNT->AddElement(H, 2);  // 2 hydrogen atoms
-    TNT->AddElement(C, 7);  // 7 carbon atom
-    TNT->AddElement(N, 3);  // 3 nitrogen atoms
-    TNT->AddElement(O, 6);  // 6 oxygen atoms
+    // TATB has (C6(NO2)3(NH2)3) which results in:
+    TATB->AddElement(H, 6);  // 6 hydrogen atoms
+    TATB->AddElement(C, 6);  // 6 carbon atom
+    TATB->AddElement(N, 6);  // 6 nitrogen atoms
+    TATB->AddElement(O, 6);  // 6 oxygen atoms
 
 
 //---------------------------Casing---------------------------------------
@@ -150,20 +150,20 @@ G4VPhysicalVolume *PMDetectorConstruction::Construct()
 ###########################################################
 */
 // The model that is to be designed consists of the dimensions:
-// Air
 //
-// Fissile material, HEU or WgPu, Using bateman to solve for concentration
+// Fissile material, HEU, Using bateman to solve for concentration
 // Neutron reflector, Be
 // High Explosive, TNT
+// Empty space, Air
 // Radiation Case Shield, DU
 // Casing, Al
 // Surrounding, Air
 
     // Load variables defined in the python script
     // Open file with error checking
-    std::ifstream geometry_variables("../geometry_variables.json");
+    std::ifstream geometry_variables("data/geometry_variables.json");
     if (!geometry_variables.is_open()) {
-        throw std::runtime_error("Could not open file ../geometry_variables.json");
+        throw std::runtime_error("Could not open file data/geometry_variables.json");
     }
 
     // Parse JSON
@@ -194,14 +194,9 @@ G4VPhysicalVolume *PMDetectorConstruction::Construct()
         logicReflector = GetLayer(json_data["Reflector"]["inner"].get<double>()*cm, json_data["Reflector"]["outer"].get<double>()*cm, refMat, "Reflector");
     }
 
-    // Create Tamper
-    if (json_data.contains("Tamper")) {
-        logicTamper = GetLayer(json_data["Tamper"]["inner"].get<double>()*cm, json_data["Tamper"]["outer"].get<double>()*cm, tampMat, "Tamper");
-    }
-
     // Create HE
     if (json_data.contains("HE")) {
-        logicHE = GetLayer(json_data["HE"]["inner"].get<double>()*cm, json_data["HE"]["outer"].get<double>()*cm, TNT, "HE");
+        logicHE = GetLayer(json_data["HE"]["inner"].get<double>()*cm, json_data["HE"]["outer"].get<double>()*cm, TATB, "HE");
     }
 
     // Create radiation case

@@ -408,6 +408,7 @@ CMakeFiles/sim.dir/src/PMActionInitialization.cc.o: \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ApplicationState.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4UIparameter.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4GeneralParticleSourceData.hh \
+ /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleGun.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleTable.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleTableIterator.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleTable.icc \

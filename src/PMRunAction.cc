@@ -26,7 +26,7 @@ void PMRunAction::BeginOfRunAction(const G4Run *run)
     std::stringstream strRunID;
     strRunID << runID;
 
-    analysisManager->OpenFile("output" + strRunID.str() + ".root");
+    analysisManager->OpenFile("data/output" + strRunID.str() + ".root");
 }
 
 void PMRunAction::EndOfRunAction(const G4Run *run)
@@ -37,7 +37,7 @@ void PMRunAction::EndOfRunAction(const G4Run *run)
     analysisManager->Write();
     analysisManager->CloseFile();
 
-    if(G4Threading::IsMasterThread()) {
-        int result = std::system("root -l -b -q '../beautify.C'");
-    }
+    //if(G4Threading::IsMasterThread()) {
+    //    int result = std::system("root -l -b -q '../beautify.C'");
+    //}
 }

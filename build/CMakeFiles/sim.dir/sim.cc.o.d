@@ -776,6 +776,7 @@ CMakeFiles/sim.dir/sim.cc.o: /home/olovrahm/programs/Verification/sim.cc \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4SPSEneDistribution.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4GeneralParticleSourceMessenger.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4GeneralParticleSourceData.hh \
+ /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleGun.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/globals.hh \
  /home/olovrahm/programs/Verification/include/PMRunAction.hh \
  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4UserRunAction.hh \

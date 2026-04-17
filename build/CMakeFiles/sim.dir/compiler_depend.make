@@ -840,6 +840,7 @@ CMakeFiles/sim.dir/sim.cc.o: ../sim.cc \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4SPSEneDistribution.hh \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4GeneralParticleSourceMessenger.hh \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4GeneralParticleSourceData.hh \
+  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleGun.hh \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/globals.hh \
   ../include/PMRunAction.hh \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4UserRunAction.hh \
@@ -1306,10 +1307,12 @@ CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.o: ../src/MyPrimaryGeneratorA
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ApplicationState.hh \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4UIparameter.hh \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4GeneralParticleSourceData.hh \
+  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleGun.hh \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleTable.hh \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleTableIterator.hh \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleTable.icc \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/globals.hh \
+  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4Gamma.hh \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4IonTable.hh \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4Ions.hh \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleTable.hh \
@@ -1391,7 +1394,9 @@ CMakeFiles/sim.dir/src/MyPrimaryGeneratorAction.cc.o: ../src/MyPrimaryGeneratorA
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/CLHEP/Random/RandPoisson.icc \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/CLHEP/Random/RandPoissonQ.icc \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/CLHEP/Random/RandStudentT.h \
-  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/CLHEP/Random/RandStudentT.icc
+  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/CLHEP/Random/RandStudentT.icc \
+  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4RandomDirection.hh \
+  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/Randomize.hh
 
 CMakeFiles/sim.dir/src/PMActionInitialization.cc.o: ../src/PMActionInitialization.cc \
   /usr/include/stdc-predef.h \
@@ -1856,10 +1861,12 @@ CMakeFiles/sim.dir/src/PMActionInitialization.cc.o: ../src/PMActionInitializatio
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ApplicationState.hh \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4UIparameter.hh \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4GeneralParticleSourceData.hh \
+  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleGun.hh \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleTable.hh \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleTableIterator.hh \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleTable.icc \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/globals.hh \
+  /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4Gamma.hh \
   ../include/PMRunAction.hh \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4UserRunAction.hh \
   /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4Run.hh \
@@ -4075,6 +4082,8 @@ CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.o: ../src/PMSensitiveDetector.cc \
 
 /usr/include/c++/11/bits/valarray_after.h:
 
+/home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4RandomDirection.hh:
+
 /usr/include/c++/11/bits/slice_array.h:
 
 /usr/include/c++/11/bits/valarray_array.tcc:
@@ -4538,6 +4547,8 @@ CMakeFiles/sim.dir/src/PMSensitiveDetector.cc.o: ../src/PMSensitiveDetector.cc \
 /home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/CLHEP/Random/RandGeneral.h:
 
 /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
+
+/home/olovrahm/Software/Geant4/geant4-v11.4.0-install/include/Geant4/G4ParticleGun.hh:
 
 /usr/include/c++/11/string_view:
 
