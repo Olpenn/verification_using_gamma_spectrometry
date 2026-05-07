@@ -12,19 +12,24 @@ def main():
     # Initialize the dict where data is stored
     # The key is the size of the core, the size of the radiation case and where the emission was from
     # For example: "core_emission_core_1.23_radCase_0.2" : 1000, "background_emission_core_1.23_radCase_0.2" : 500
-    if os.path.exists("data/metadata.json"):
-        with open("data/metadata.json", "r") as f:
+    if os.path.exists("data/metadata_nothickness.json"):
+        with open("data/metadata_nothickness.json", "r") as f:
             metadata = json.load(f)
     else:
         metadata = dict()
     
-    for i in range(1):
+    #for i in range(1):
+    for core_enrichment in [0.90, 0.91, 0.92, 0.93, 0.94]:
         # Create the parameters:
-        space_thickness = random.uniform(5, 7)
-        gap_thickness = random.uniform(0, 5)
-        radiationCase_thickness = random.uniform(0.2, 2)
-        core_enrichment = random.uniform(0.9, 1.0)
-        radiationCase_enrichment = random.uniform(0.0015, 0.0072)
+        #space_thickness = random.uniform(5, 7)
+        #gap_thickness = random.uniform(0, 5)
+        #radiationCase_thickness = random.uniform(0.2, 2)
+        #core_enrichment = random.uniform(0.9, 1.0)
+        #radiationCase_enrichment = random.uniform(0.0015, 0.0072)
+        space_thickness = 5
+        gap_thickness = 0
+        radiationCase_thickness = 0.000001
+        radiationCase_enrichment = 0.
 
         core_thickness = ((3/(4*math.pi)) * 12/0.0191 + (space_thickness**3) )**(1/3)
 
@@ -44,27 +49,27 @@ def main():
 
         # Simulate the system with the given configuration
         core_activity_185, core_y_185 = simulate(space_thickness, gap_thickness, radiationCase_thickness, core_enrichment, radiationCase_enrichment, True, 185.7)
-        bg_activity_185, bg_y_185 = simulate(space_thickness, gap_thickness, radiationCase_thickness, core_enrichment, radiationCase_enrichment, False, 185.7)
+        #bg_activity_185, bg_y_185 = simulate(space_thickness, gap_thickness, radiationCase_thickness, core_enrichment, radiationCase_enrichment, False, 185.7)
         
         this_metadata["core_activity_185.7keV"] = core_activity_185
         this_metadata["detected_core_emission_185.7keV"] = core_y_185
-        this_metadata["background_activity_185.7keV"] = bg_activity_185
-        this_metadata["detected_background_emission_185.7keV"] = bg_y_185
-        this_metadata["detected_total_emission_185.7keV"] = bg_y_185 + core_y_185
+        #this_metadata["background_activity_185.7keV"] = bg_activity_185
+        #this_metadata["detected_background_emission_185.7keV"] = bg_y_185
+        #this_metadata["detected_total_emission_185.7keV"] = bg_y_185 + core_y_185
 
         # Simulate the system with the given configuration
         core_activity_1001, core_y_1001 = simulate(space_thickness, gap_thickness, radiationCase_thickness, core_enrichment, radiationCase_enrichment, True, 1001.0)
-        bg_activity_1001, bg_y_1001 = simulate(space_thickness, gap_thickness, radiationCase_thickness, core_enrichment, radiationCase_enrichment, False, 1001.0)
+        #bg_activity_1001, bg_y_1001 = simulate(space_thickness, gap_thickness, radiationCase_thickness, core_enrichment, radiationCase_enrichment, False, 1001.0)
 
         this_metadata["core_activity_1001.0keV"] = core_activity_1001
         this_metadata["detected_core_emission_1001.0keV"] = core_y_1001
-        this_metadata["background_activity_1001.0keV"] = bg_activity_1001
-        this_metadata["detected_background_emission_1001.0keV"] = bg_y_1001
-        this_metadata["detected_total_emission_1001.0keV"] = bg_y_1001 + core_y_1001
+        #this_metadata["background_activity_1001.0keV"] = bg_activity_1001
+        #this_metadata["detected_background_emission_1001.0keV"] = bg_y_1001
+        #this_metadata["detected_total_emission_1001.0keV"] = bg_y_1001 + core_y_1001
 
         metadata[str(uuid.uuid4())] = this_metadata
 
-    with open("data/metadata.json", "w") as f:
+    with open("data/metadata_nothickness.json", "w") as f:
         json.dump(metadata, f, indent=4)
 
 
@@ -77,9 +82,9 @@ def simulate(space_thickness, gap_thickness, radiationCase_thickness, core_enric
 
     # Find the activity of the photon that we want to simulate
     if core_emission:
-        photon_activity = round(total_activity.get_core_activities(photon_energy))
+        photon_activity = total_activity.get_core_activities(photon_energy)
     else:
-        photon_activity = round(total_activity.get_bg_activities(photon_energy))
+        photon_activity = total_activity.get_bg_activities(photon_energy)
     print(f"Photon activity: {photon_activity} s^-1")
 
     # Simulate 10^5 photons. Then scale w.r.t. activity to get the number of photons emitted in 1 second, which is the photon intensity.
@@ -93,7 +98,7 @@ def simulate(space_thickness, gap_thickness, radiationCase_thickness, core_enric
         x = 1.00103
 
     bin_number = h.FindBin(x)
-    y = h.GetBinContent(bin_number) * photon_activity / 10**5
+    y = h.GetBinContent(bin_number) * photon_activity / 10**6 
 
     print(f"Photon energy: {photon_energy} keV")
     print("Bin Number:", bin_number)
