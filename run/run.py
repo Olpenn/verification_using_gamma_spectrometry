@@ -87,7 +87,7 @@ def simulate(space_thickness, gap_thickness, radiationCase_thickness, core_enric
         photon_activity = total_activity.get_bg_activities(photon_energy)
     print(f"Photon activity: {photon_activity} s^-1")
 
-    # Simulate 10^5 photons. Then scale w.r.t. activity to get the number of photons emitted in 1 second, which is the photon intensity.
+    # Simulate 10^6 photons. Then scale w.r.t. activity to get the number of photons emitted in 1 second, which is the photon intensity.
     subprocess.run(["./sim", "run.mac"])
 
     f = root.TFile("data/output0.root")

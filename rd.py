@@ -33,7 +33,7 @@ def main(nuclide_input):
             activities_dict[nuclide].append(float(core_ingrowth.activities("Bq")[nuclide]))
 
 
-    plt.figure(figsize=(9, 4), dpi=300)
+    plt.figure(figsize=(10, 5), dpi=300)
     ax = plt.gca()
 
 
@@ -41,12 +41,14 @@ def main(nuclide_input):
     # Plot the activities
     for nuclide in nuclide_names:
         activity_list = activities_dict[nuclide]
-        plt.plot(X, activity_list, label=nuclide)
+        activity_list = np.array(activity_list)
+        plt.plot(X, activity_list/1000, label=nuclide)
 
     ax.set_xscale('log')
     plt.title(f"Activity of nuclides from decay of {nuclide_input} over time")
     plt.xlabel("Time (years)")
-    plt.ylabel("Activity (Bq)")
+    plt.xticks(fontsize=14, fontweight='bold')
+    plt.ylabel(r"Relative Activity ($A/A_0$)")
     plt.legend(fontsize='small')
     plt.savefig(f"activities_{nuclide_input}.png")
 

@@ -25,6 +25,7 @@ int main(int argc, char** argv)
     #endif
     // Physics list
     PMPhysicsList* physicsList = new PMPhysicsList();
+    runManager->SetNumberOfThreads(4);
     runManager->SetUserInitialization(physicsList);
     
     // Detector Construction

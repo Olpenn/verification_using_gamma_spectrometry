@@ -29,24 +29,24 @@ def core_noCore_plot(metadata):
     alpha_values = np.where(ignore, 0.1, 1.0)
 
     plt.figure(figsize=(10, 5))
-    plt.title("Detected emission from a warhead with the core removed and a warhead with the core")
+    plt.title("Detected emission from a real warhead and a hoax warhead")
 
     plt.scatter(photon_intensity_real_185, photon_intensity_real_1001, marker='o', color="orange", alpha=alpha_values)
     plt.scatter(photon_intensity_fake_185, photon_intensity_fake_1001, marker='+', color="blue", alpha=alpha_values)
 
     # Create custom legend handles (force alpha=1)
     legend_elements = [
-        Line2D([0], [0], marker='+', color='blue', label='Detected emission from a warhead with the core removed',
+        Line2D([0], [0], marker='+', color='blue', label='Hoax Warhead',
             linestyle='None', markersize=8, alpha=1.0),
-        Line2D([0], [0], marker='o', color='w', label='Detected emission from a warhead',
+        Line2D([0], [0], marker='o', color='w', label='Real Warhead',
             markerfacecolor='orange', markersize=8, alpha=1.0)
     ]
 
     plt.legend(handles=legend_elements)
 
 
-    plt.xlabel("185.7 keV Gamma Intensity (s^-1)")
-    plt.ylabel("1001 keV Gamma Intensity (s^-1)")
+    plt.xlabel("185.7 keV Gamma Intensity ($s^{-1}$)")
+    plt.ylabel("1001 keV Gamma Intensity ($s^{-1}$)")
 
     plt.savefig("core_vs_noCore.png", dpi=300)
 
@@ -76,38 +76,12 @@ def core_case_plot(metadata):
         photon_intensity_case_1001.append(geometry["detected_background_emission_1001.0keV"])
         photon_intensity_core_185.append(geometry["detected_core_emission_185.7keV"])
         photon_intensity_core_1001.append(geometry["detected_core_emission_1001.0keV"])
-
+    radiationCase_enrichments = np.array(radiationCase_enrichments)
+    core_enrichments = np.array(core_enrichments)
 
     # Create alpha array: False → 1.0, True → 0.1
     alpha_values = np.where(ignore, 0.1, 1.0)
 
-    plt.figure(figsize=(10, 5))
-    ax = plt.gca()
-    plt.title("Intensity of 185.7 keV and 1001 keV Gammas from the core and the case")
-    
-    plt.scatter(photon_intensity_case_185, photon_intensity_case_1001, marker='+', label="Detected emission from the case", color="blue", alpha=alpha_values)
-    plt.scatter(photon_intensity_core_185, photon_intensity_core_1001, marker='x', label="Detected emission from the core", color="orange", alpha=alpha_values)
-
-    # Add colorbar to show mapping
-    #plt.colorbar(sc, label=Z_value)
-
-    # Create custom legend handles (force alpha=1)
-    legend_elements = [
-        Line2D([0], [0], marker='+', color='blue', label='Detected emission from the case',
-            linestyle='None', markersize=8, alpha=1.0),
-        Line2D([0], [0], marker='x', color='orange', label='Detected emission from the core',
-            linestyle='None', markersize=8, alpha=1.0)
-    ]
-
-    plt.legend(handles=legend_elements)
-
-
-    plt.xlabel("185.7 keV Gamma Intensity (s^-1)")
-    plt.ylabel("1001 keV Gamma Intensity (s^-1)")
-    ax.set_xscale('log')
-    ax.set_yscale('log')
-
-    plt.savefig(f"core_vs_case.png", dpi=300)
     
     # ------ Use Thickness of the case as a colorbar ------
 
@@ -132,8 +106,8 @@ def core_case_plot(metadata):
     plt.legend(handles=legend_elements)
 
 
-    plt.xlabel("185.7 keV Gamma Intensity (s^-1)")
-    plt.ylabel("1001 keV Gamma Intensity (s^-1)")
+    plt.xlabel("185.7 keV Gamma Intensity ($s^{-1}$)")
+    plt.ylabel("1001 keV Gamma Intensity ($s^{-1}$)")
     ax.set_xscale('log')
     ax.set_yscale('log')
 
@@ -162,14 +136,14 @@ def core_case_plot(metadata):
     plt.legend(handles=legend_elements)
 
 
-    plt.xlabel("185.7 keV Gamma Intensity (s^-1)")
-    plt.ylabel("1001 keV Gamma Intensity (s^-1)")
+    plt.xlabel("185.7 keV Gamma Intensity ($s^{-1}$)")
+    plt.ylabel("1001 keV Gamma Intensity ($s^{-1}$)")
     ax.set_xscale('log')
     ax.set_yscale('log')
 
     plt.savefig(f"core_vs_case_with_case_mass.png", dpi=300)
 
-    # ------ Use Size of the center space as a colorbar ------
+    # ------ Use Size of the cavity as a colorbar ------
 
     plt.figure(figsize=(10, 5))
     ax = plt.gca()
@@ -192,8 +166,8 @@ def core_case_plot(metadata):
     plt.legend(handles=legend_elements)
 
 
-    plt.xlabel("185.7 keV Gamma Intensity (s^-1)")
-    plt.ylabel("1001 keV Gamma Intensity (s^-1)")
+    plt.xlabel("185.7 keV Gamma Intensity ($s^{-1}$)")
+    plt.ylabel("1001 keV Gamma Intensity ($s^{-1}$)")
     ax.set_xscale('log')
     ax.set_yscale('log')
 
@@ -209,22 +183,22 @@ def core_case_plot(metadata):
         photon_intensity_case_185, 
         photon_intensity_case_1001, 
         marker='+', 
-        label="Detected emission from the case", 
-        c=radiationCase_enrichments, 
+        label="Detected emission from the case (%)", 
+        c=radiationCase_enrichments*100, 
         cmap="viridis",
         alpha=alpha_values)
     sc_core = plt.scatter(
         photon_intensity_core_185, 
         photon_intensity_core_1001, 
         marker='x', 
-        label="Detected emission from the core", 
-        c=core_enrichments, 
+        label="Detected emission from the core (%)", 
+        c=core_enrichments*100, 
         cmap="plasma",
         alpha=alpha_values)
 
     # Add colorbar to show mapping
-    plt.colorbar(sc_core, label="Core Enrichment", location="left")
-    plt.colorbar(sc_case, label="Case Enrichment", location="right")
+    plt.colorbar(sc_core, label="Core Enrichment(%)", location="left")
+    plt.colorbar(sc_case, label="Case Enrichment(%)", location="right")
 
     # Create custom legend handles (force alpha=1)
     legend_elements = [
@@ -237,8 +211,8 @@ def core_case_plot(metadata):
     plt.legend(handles=legend_elements)
 
 
-    plt.xlabel("185.7 keV Gamma Intensity (s^-1)")
-    plt.ylabel("1001 keV Gamma Intensity (s^-1)")
+    plt.xlabel("185.7 keV Gamma Intensity ($s^{-1}$)")
+    plt.ylabel("1001 keV Gamma Intensity ($s^{-1}$)")
     ax.set_xscale('log')
     ax.set_yscale('log')
 
@@ -267,8 +241,8 @@ def core_case_plot(metadata):
     plt.legend(handles=legend_elements)
 
 
-    plt.xlabel("185.7 keV Gamma Intensity (s^-1)")
-    plt.ylabel("1001 keV Gamma Intensity (s^-1)")
+    plt.xlabel("185.7 keV Gamma Intensity ($s^{-1}$)")
+    plt.ylabel("1001 keV Gamma Intensity ($s^{-1}$)")
     ax.set_xscale('log')
     ax.set_yscale('log')
 
@@ -292,7 +266,14 @@ def core_case_emission_detection_plot(metadata):
         photon_intensity_case_185_detected.append(geometry["detected_background_emission_185.7keV"])
         photon_intensity_case_1001_emittied.append(geometry["background_activity_1001.0keV"])
         photon_intensity_case_1001_detected.append(geometry["detected_background_emission_1001.0keV"])
-
+    photon_intensity_core_185_emittied = np.array(photon_intensity_core_185_emittied)
+    photon_intensity_core_185_detected = np.array(photon_intensity_core_185_detected)
+    photon_intensity_core_1001_emittied = np.array(photon_intensity_core_1001_emittied)
+    photon_intensity_core_1001_detected = np.array(photon_intensity_core_1001_detected)
+    photon_intensity_case_185_emittied = np.array(photon_intensity_case_185_emittied)
+    photon_intensity_case_185_detected = np.array(photon_intensity_case_185_detected)
+    photon_intensity_case_1001_emittied = np.array(photon_intensity_case_1001_emittied)
+    photon_intensity_case_1001_detected = np.array(photon_intensity_case_1001_detected)
 
     # Create alpha array: True → 1.0, False → 0.1
 
@@ -304,9 +285,41 @@ def core_case_emission_detection_plot(metadata):
 
     plt.scatter(photon_intensity_core_185_emittied, photon_intensity_core_1001_emittied, marker='x', label="Emission from the core", color="black")
     plt.scatter(photon_intensity_case_185_emittied, photon_intensity_case_1001_emittied, marker='+', label="Emission from the case", color="black")
-    plt.scatter(photon_intensity_core_185_detected, photon_intensity_core_1001_detected, marker='x', label="Detection from the core", color="orange")
-    plt.scatter(photon_intensity_case_185_detected, photon_intensity_case_1001_detected, marker='+', label="Detection from the case", color="blue")
 
+    p_core_185 = photon_intensity_core_185_detected / photon_intensity_core_185_emittied # p = Detected_var / emission_intensity
+    p_case_185 = photon_intensity_case_185_detected / photon_intensity_case_185_emittied
+    p_core_1001 = photon_intensity_core_1001_detected / photon_intensity_core_1001_emittied
+    p_case_1001 = photon_intensity_case_1001_detected / photon_intensity_case_1001_emittied
+
+    photon_intensity_core_185_uncertainty = photon_intensity_core_185_emittied * np.sqrt(p_core_185*(1-p_core_185)/1e6) # Uncertainty =  emission_intensity * sqrt(p(1-p)/1e6)
+    photon_intensity_case_185_uncertainty = photon_intensity_case_185_emittied * np.sqrt(p_case_185*(1-p_case_185)/1e6) 
+    photon_intensity_core_1001_uncertainty = photon_intensity_core_1001_emittied * np.sqrt(p_core_1001*(1-p_core_1001)/1e6) 
+    photon_intensity_case_1001_uncertainty = photon_intensity_case_1001_emittied * np.sqrt(p_case_1001*(1-p_case_1001)/1e6) 
+    
+
+    plt.errorbar(
+        photon_intensity_core_185_detected, 
+        photon_intensity_core_1001_detected,
+        xerr=photon_intensity_core_185_uncertainty,
+        yerr=photon_intensity_core_1001_uncertainty,
+        fmt='x',
+        ecolor=('orange', 0.8),
+        color='orange',
+        label="Detection from the core",
+        capsize=2
+    )
+
+    plt.errorbar(
+        photon_intensity_case_185_detected, 
+        photon_intensity_case_1001_detected,
+        xerr=photon_intensity_case_185_uncertainty,
+        yerr=photon_intensity_case_1001_uncertainty,
+        fmt='+',
+        ecolor=('blue', 0.8),
+        color='blue',
+        label="Detection from the case",
+        capsize=2
+    )
 
     # Create custom legend handles (force alpha=1)
     legend_elements = [
@@ -323,8 +336,8 @@ def core_case_emission_detection_plot(metadata):
     plt.legend(handles=legend_elements)
 
 
-    plt.xlabel("185.7 keV Photon Intensity (s^-1)")
-    plt.ylabel("1001.0 keV Photon Intensity (s^-1)")
+    plt.xlabel("185.7 keV Photon Intensity ($s^{-1}$)")
+    plt.ylabel("1001 keV Photon Intensity ($s^{-1}$)")
     ax.set_xscale('log')
     ax.set_yscale('log')
 
@@ -332,52 +345,184 @@ def core_case_emission_detection_plot(metadata):
 
 # ----------------------------------------------------------------------------------------------
 
+
     plt.figure(figsize=(10, 5))
     ax = plt.gca()
-    plt.title("Emmitted and detected photons from the case and the core")
+    plt.title("Intensity of 185.7 keV and 1001 keV Gammas from the core and the case")
+    
+    plt.errorbar(
+        photon_intensity_core_185_detected, 
+        photon_intensity_core_1001_detected,
+        xerr=photon_intensity_core_185_uncertainty,
+        yerr=photon_intensity_core_1001_uncertainty,
+        fmt='x',
+        ecolor=('orange', 0.8),
+        color='orange',
+        label="Detection from the core",
+        capsize=2
+    )
 
-    alpha_value = 1
-    
-    plt.scatter(photon_intensity_core_185_emittied, photon_intensity_core_1001_emittied, marker='x', label="Emission from the core", color="black", alpha=alpha_value)
-    plt.scatter(photon_intensity_case_185_emittied, photon_intensity_case_1001_emittied, marker='+', label="Emission from the case", color="black", alpha=alpha_value)
-    plt.scatter(photon_intensity_core_185_detected, photon_intensity_core_1001_detected, marker='x', label="Detection from the core", color="orange", alpha=alpha_value)
-    plt.scatter(photon_intensity_case_185_detected, photon_intensity_case_1001_detected, marker='+', label="Detection from the case", color="blue", alpha=alpha_value)
-    
-    with open("run/data/metadata_nothickness.json", "r") as f:
-        metadata_nothickness = json.load(f)
-    
-    detected_core_emission_185_nocase = [] # Array consists of values of the form detected_core_emission_185.7keV for geometries with no case
-    detected_core_emission_1001_nocase = [] # Array consists of values of the form detected_core_emission_1001.0keV for geometries with no case
-    for key, this_metadata in metadata_nothickness.items():
-        detected_core_emission_185_nocase.append(this_metadata["detected_core_emission_185.7keV"])
-        detected_core_emission_1001_nocase.append(this_metadata["detected_core_emission_1001.0keV"])
-    
-    plt.scatter(detected_core_emission_185_nocase, detected_core_emission_1001_nocase, marker='x', label="Detection from the core with no case", color="red", alpha=1.0)
-
+    plt.errorbar(
+        photon_intensity_case_185_detected, 
+        photon_intensity_case_1001_detected,
+        xerr=photon_intensity_case_185_uncertainty,
+        yerr=photon_intensity_case_1001_uncertainty,
+        fmt='+',
+        ecolor=('blue', 0.8),
+        color='blue',
+        label="Detection from the case",
+        capsize=2
+    )
 
     # Create custom legend handles (force alpha=1)
     legend_elements = [
-        Line2D([0], [0], marker='+', linestyle='None', label='Detected emission from the case',
-            color='blue', markersize=8, alpha=alpha_value),
-        Line2D([0], [0], marker='x', linestyle='None', label='Detected emission from the core',
-            color='orange', markersize=8, alpha=alpha_value),
-        Line2D([0], [0], marker='+', linestyle='None', label='Emission from the case',
-            color='black', markersize=8, alpha=alpha_value),
-        Line2D([0], [0], marker='x', linestyle='None', label='Emission from the core',
-            color='black', markersize=8, alpha=alpha_value),
-        Line2D([0], [0], marker='x', linestyle='None', label='Detection from the core with no case',
-            color='red', markersize=8, alpha=1.0)
+        Line2D([0], [0], marker='+', color='blue', label='Detected emission from the case',
+            linestyle='None', markersize=8, alpha=1.0),
+        Line2D([0], [0], marker='x', color='orange', label='Detected emission from the core',
+            linestyle='None', markersize=8, alpha=1.0)
     ]
 
     plt.legend(handles=legend_elements)
 
 
-    plt.xlabel("185.7 keV Photon Intensity (s^-1)")
-    plt.ylabel("1001.0 keV Photon Intensity (s^-1)")
+    plt.xlabel("185.7 keV Gamma Intensity ($s^{-1}$)")
+    plt.ylabel("1001 keV Gamma Intensity ($s^{-1}$)")
+    ax.set_xscale('log')
+    ax.set_yscale('log')
+
+    plt.savefig(f"core_vs_case.png", dpi=300)
+
+#---------------------------------------------------------------------------------------------
+
+    
+    with open("run/data/metadata_nothickness.json", "r") as f:
+        metadata_nothickness = json.load(f)
+    
+    detected_core_emission_185_nocase = [] # Array consists of values of the form detected_core_emission_185.7keV for geometries with no case
+    total_core_emission_185_nocase = []
+    detected_core_emission_1001_nocase = [] # Array consists of values of the form detected_core_emission_1001.0keV for geometries with no case
+    total_core_emission_1001_nocase = []
+    for key, this_metadata in metadata_nothickness.items():
+        detected_core_emission_185_nocase.append(this_metadata["detected_core_emission_185.7keV"])
+        detected_core_emission_1001_nocase.append(this_metadata["detected_core_emission_1001.0keV"])
+        total_core_emission_185_nocase.append(this_metadata["core_activity_185.7keV"])
+        total_core_emission_1001_nocase.append(this_metadata["core_activity_1001.0keV"])
+    detected_core_emission_185_nocase = np.array(detected_core_emission_185_nocase)
+    total_core_emission_185_nocase = np.array(total_core_emission_185_nocase)
+    detected_core_emission_1001_nocase = np.array(detected_core_emission_1001_nocase)
+    total_core_emission_1001_nocase = np.array(total_core_emission_1001_nocase)
+
+    p_core_185_nocase = detected_core_emission_185_nocase / total_core_emission_185_nocase # p = Detected_var / emission_intensity
+    p_core_1001_nocase = detected_core_emission_1001_nocase / total_core_emission_1001_nocase
+
+    mask = ~np.isnan(p_core_1001_nocase)
+    p_core_185_nocase = p_core_185_nocase[mask]
+    p_core_1001_nocase = p_core_1001_nocase[mask]
+    total_core_emission_185_nocase = total_core_emission_185_nocase[mask]
+    total_core_emission_1001_nocase = total_core_emission_1001_nocase[mask]
+    detected_core_emission_185_nocase = detected_core_emission_185_nocase[mask]
+    detected_core_emission_1001_nocase = detected_core_emission_1001_nocase[mask]
+
+    print("min 185", min(detected_core_emission_185_nocase))
+    print("min 1001", min(detected_core_emission_1001_nocase))
+
+
+
+    uncertainty_core_emission_185_nocase = total_core_emission_185_nocase * np.sqrt(p_core_185_nocase*(1-p_core_185_nocase)/1e6) # Uncertainty =  emission_intensity * sqrt(p(1-p)/1e6)
+    uncertainty_core_emission_1001_nocase = total_core_emission_1001_nocase * np.sqrt(p_core_1001_nocase*(1-p_core_1001_nocase)/1e6) 
+    
+
+    plt.errorbar(
+        detected_core_emission_185_nocase, 
+        detected_core_emission_1001_nocase,
+        xerr=uncertainty_core_emission_185_nocase,
+        yerr=uncertainty_core_emission_1001_nocase,
+        fmt='x',
+        ecolor=('red', 0.8),
+        color='red',
+        label="Detection from the core with no case",
+        capsize=2
+    )
+
+
+    # Create custom legend handles (force alpha=1)
+    legend_elements = [
+        Line2D([0], [0], marker='+', linestyle='None', label='Detected emission from the case',
+            color='blue', markersize=8),
+        Line2D([0], [0], marker='x', linestyle='None', label='Detected emission from the core',
+            color='orange', markersize=8),
+        Line2D([0], [0], marker='+', linestyle='None', label='Emission from the case',
+            color='black', markersize=8),
+        Line2D([0], [0], marker='x', linestyle='None', label='Emission from the core',
+            color='black', markersize=8),
+        Line2D([0], [0], marker='x', linestyle='None', label='Detection from the core with no case',
+            color='red', markersize=8)
+    ]
+
+    plt.legend(handles=legend_elements)
+
+
+    plt.xlabel("185.7 keV Photon Intensity ($s^{-1}$)")
+    plt.ylabel("1001 keV Photon Intensity ($s^{-1}$)")
     ax.set_xscale('log')
     ax.set_yscale('log')
 
     plt.savefig(f"emission_and_detection_with_reference.png", dpi=300)
+
+# ---------------------------------------------------------------------------------------------
+
+    photon_intensity_real_185  = photon_intensity_case_185_detected + photon_intensity_core_185_detected
+    photon_intensity_real_1001 = photon_intensity_case_1001_detected + photon_intensity_core_1001_detected
+    photon_intensity_fake_185  = photon_intensity_case_185_detected
+    photon_intensity_fake_1001 = photon_intensity_case_1001_detected
+
+    photon_intensity_real_185_unc = photon_intensity_case_185_uncertainty + photon_intensity_core_185_uncertainty
+    photon_intensity_real_1001_unc = photon_intensity_case_1001_uncertainty + photon_intensity_core_1001_uncertainty
+    photon_intensity_fake_185_unc = photon_intensity_case_185_uncertainty 
+    photon_intensity_fake_1001_unc = photon_intensity_case_1001_uncertainty 
+
+    plt.figure(figsize=(10, 5))
+    plt.title("Detected emission from a real warhead and a hoax warhead")
+
+    plt.errorbar(
+        photon_intensity_real_185, 
+        photon_intensity_real_1001,
+        xerr=photon_intensity_real_185_unc,
+        yerr=photon_intensity_real_1001_unc,
+        fmt='o',
+        ecolor=('orange', 0.8),
+        color='orange',
+        label="Detection from the core",
+        capsize=2
+    )
+
+    plt.errorbar(
+        photon_intensity_fake_185, 
+        photon_intensity_fake_1001,
+        xerr=photon_intensity_fake_185_unc,
+        yerr=photon_intensity_fake_1001_unc,
+        fmt='+',
+        ecolor=('blue', 0.8),
+        color='blue',
+        label="Detection from the case",
+        capsize=2
+    )
+    # Create custom legend handles (force alpha=1)
+    legend_elements = [
+        Line2D([0], [0], marker='+', color='blue', label='Hoax Warhead',
+            linestyle='None', markersize=8, alpha=1.0),
+        Line2D([0], [0], marker='o', color='w', label='Real Warhead',
+            markerfacecolor='orange', markersize=8, alpha=1.0)
+    ]
+
+    plt.legend(handles=legend_elements)
+
+
+    plt.xlabel("185.7 keV Gamma Intensity ($s^{-1}$)")
+    plt.ylabel("1001 keV Gamma Intensity ($s^{-1}$)")
+
+    plt.savefig("core_vs_noCore_unc.png", dpi=300)
+
 
 
 if __name__ == "__main__":
