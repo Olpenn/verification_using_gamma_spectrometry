@@ -22,25 +22,28 @@ def core_case_emission_detection_plot(metadata):
 
 
     plt.figure(figsize=(10, 5))
-    plt.title("Detected 185.7 keV photons from the core and the case")
+    plt.title("Detected 185.7 keV photons from a real and hoax warhead")
     photon_detection_core_185 = np.array(photon_detection_core_185)
     photon_detection_case_185 = np.array(photon_detection_case_185)
+    photon_detection_real_185 = photon_detection_core_185 + photon_detection_case_185
 
-    bins_core = np.logspace(np.log10(photon_detection_core_185.min()), np.log10(photon_detection_core_185.max()), 50)
-    plt.hist(photon_detection_core_185, 
+    bins_core = np.logspace(np.log10(photon_detection_real_185.min()), np.log10(photon_detection_real_185.max()), 50)
+    plt.hist(photon_detection_real_185, 
              bins=bins_core, 
+             alpha=0.5,
              edgecolor='black',
              linewidth=0.8,
              histtype='stepfilled',
-             label='Core',
+             label='Real',
              color='orange')
     bins_case = np.logspace(np.log10(photon_detection_case_185.min()), np.log10(photon_detection_case_185.max()), 50)
     plt.hist(photon_detection_case_185, 
              edgecolor='black',
              linewidth=0.8,
+             alpha=0.5,
              bins=bins_case, 
              histtype='stepfilled',
-             label='Case',
+             label='Hoax',
              color='blue')
     
     plt.legend()
@@ -49,28 +52,31 @@ def core_case_emission_detection_plot(metadata):
     plt.ylabel("Count")
     plt.xscale('log')
 
-    plt.savefig(f"Detection_185keV.png", dpi=300)
+    plt.savefig(f"real_hoax_185keV.png", dpi=300)
 
     plt.figure(figsize=(10, 5))
-    plt.title("Detected 1001 keV photons from the core and the case")
+    plt.title("Detected 1001 keV photons from a real and hoax warhead")
     photon_detection_core_1001 = np.array(photon_detection_core_1001)
     photon_detection_case_1001 = np.array(photon_detection_case_1001)
+    photon_detection_real_1001 = photon_detection_case_1001 + photon_detection_core_1001
 
-    bins_core = np.logspace(np.log10(photon_detection_core_1001.min()), np.log10(photon_detection_core_1001.max()), 50)
-    plt.hist(photon_detection_core_1001, 
+    bins_core = np.logspace(np.log10(photon_detection_real_1001.min()), np.log10(photon_detection_real_1001.max()), 50)
+    plt.hist(photon_detection_real_1001, 
              bins=bins_core, 
+             alpha=0.5,
              edgecolor='black',
              linewidth=0.8,
              histtype='stepfilled',
-             label='Core',
+             label='Real',
              color='orange')
     bins_case = np.logspace(np.log10(photon_detection_case_1001.min()), np.log10(photon_detection_case_1001.max()), 50)
     plt.hist(photon_detection_case_1001, 
              edgecolor='black',
              linewidth=0.8,
+             alpha=0.5,
              bins=bins_case, 
              histtype='stepfilled',
-             label='Case',
+             label='Hoax',
              color='blue')
     
     plt.legend()
@@ -79,7 +85,7 @@ def core_case_emission_detection_plot(metadata):
     plt.ylabel("Count")
     plt.xscale('log')
 
-    plt.savefig(f"Detection_1001keV.png", dpi=300)
+    plt.savefig(f"real_hoax_1001keV.png", dpi=300)
 
 
 if __name__ == "__main__":
