@@ -22,7 +22,7 @@ def core_case_emission_detection_plot(metadata):
 
 
     plt.figure(figsize=(10, 5))
-    plt.title("Emitted 185.7 keV photons from a core and a DU core")
+    plt.title("Emitted 185.7 keV photons from the core and the case")
     photon_emission_core_185 = np.array(photon_emission_core_185)
     photon_emission_case_185 = np.array(photon_emission_case_185)
 
@@ -52,7 +52,7 @@ def core_case_emission_detection_plot(metadata):
     plt.savefig(f"Emission_185keV.png", dpi=300)
 
     plt.figure(figsize=(10, 5))
-    plt.title("Emitted 1001 keV photons from a core and a DU core")
+    plt.title("Emitted 1001 keV photons from the core and the case")
     photon_emission_core_1001 = np.array(photon_emission_core_1001)
     photon_emission_case_1001 = np.array(photon_emission_case_1001)
 
