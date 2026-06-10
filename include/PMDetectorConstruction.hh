@@ -31,7 +31,7 @@
 class PMDetectorConstruction : public G4VUserDetectorConstruction
 {
 public:
-    PMDetectorConstruction(int time);
+    PMDetectorConstruction();
     virtual ~PMDetectorConstruction();   
     
     virtual G4VPhysicalVolume *Construct();

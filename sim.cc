@@ -15,7 +15,6 @@
 
 int main(int argc, char** argv)
 {
-    int time = 0;
     G4UIExecutive *ui = nullptr;
 
     #ifdef G4MULTITHREADED
@@ -29,7 +28,7 @@ int main(int argc, char** argv)
     runManager->SetUserInitialization(physicsList);
     
     // Detector Construction
-    runManager->SetUserInitialization(new PMDetectorConstruction(time));
+    runManager->SetUserInitialization(new PMDetectorConstruction());
     
     // Primary Generator
     MyPrimaryGeneratorAction* primaryAction = new MyPrimaryGeneratorAction();
@@ -39,7 +38,6 @@ int main(int argc, char** argv)
 
     runManager->Initialize();
     
-    primaryAction->SetupIonSources(); 
 
 
 

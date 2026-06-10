@@ -20,7 +20,6 @@ public:
     void SetupIonSources();
 
 private:
-    G4GeneralParticleSource* fGPS;
     G4ParticleGun* fParticleGun;
     G4bool photon_emission = true; // Set to true to simulate photon emission instead of ion emission
 

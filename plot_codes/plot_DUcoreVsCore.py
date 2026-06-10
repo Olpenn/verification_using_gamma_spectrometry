@@ -29,24 +29,17 @@ def core_case_emission_detection_plot(metadata):
 
     
 
-    plt.scatter(photon_intensity_core_185, photon_intensity_core_1001, marker='x', label="HEU core", color="black")
-    plt.scatter(photon_intensity_DUcore_185, photon_intensity_DUcore_1001, marker='+', label="DU core", color="black")
+    plt.scatter(photon_intensity_core_185, photon_intensity_core_1001, marker='x', label="HEU core", color="orange")
+    plt.scatter(photon_intensity_DUcore_185, photon_intensity_DUcore_1001, marker='+', label="DU core", color="green")
 
 
 
-    # Create custom legend handles (force alpha=1)
-    legend_elements = [
-        Line2D([0], [0], marker='+', linestyle='None', label='DU core',
-            color='black', markersize=8, alpha=1.0),
-        Line2D([0], [0], marker='x', linestyle='None', label='HEU core',
-            color='black', markersize=8, alpha=1.0)
-    ]
 
-    plt.legend(handles=legend_elements)
+    plt.legend()
 
 
     plt.xlabel("185.7 keV Photon Intensity ($s^{-1}$)")
-    plt.ylabel("1001.0 keV Photon Intensity ($s^{-1}$)")
+    plt.ylabel("1001 keV Photon Intensity ($s^{-1}$)")
     ax.set_xscale('log')
     ax.set_yscale('log')
 

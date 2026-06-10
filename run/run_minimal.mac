@@ -1,0 +1,10 @@
+#/run/numberOfThreads 2
+
+/run/initialize
+
+/process/had/rdm/hlThreshold 1e30 year
+/process/had/rdm/thresholdForVeryLongDecayTime 1e30 year
+
+
+/run/printProgress 10000
+/run/beamOn 10000

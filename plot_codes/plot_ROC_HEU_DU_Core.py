@@ -44,23 +44,23 @@ def plot_ROC(metadata):
     roc_auc_185 = auc(fpr_185, tpr_185)
 
 
-    # Use ROC for 1001
+    # Use ROC for 1001, invert the labels to get AUC>0.5
     y_scores_1001 = np.concatenate([hoax_1001, real_1001])
     y_true_1001 = np.concatenate([np.zeros(len(hoax_1001)), np.ones(len(real_1001))])
 
     # Compute ROC
-    fpr_1001, tpr_1001, thresholds_1001 = roc_curve(y_true_1001, y_scores_1001)
+    fpr_1001, tpr_1001, thresholds_1001 = roc_curve(y_true_1001, -y_scores_1001)
 
     # Area under curve
     roc_auc_1001 = auc(fpr_1001, tpr_1001)
 
 
-    # Use ROC for 1001/185
+    # Use ROC for 1001/185 invert the labels to get AUC>0.5
     y_scores_1001_185 = np.concatenate([hoax_1001_185, real_1001_185])
     y_true_1001_185 = np.concatenate([np.zeros(len(hoax_1001_185)), np.ones(len(real_1001_185))])
 
     # Compute ROC
-    fpr_1001_185, tpr_1001_185, thresholds_1001_185 = roc_curve(y_true_1001_185, y_scores_1001_185)
+    fpr_1001_185, tpr_1001_185, thresholds_1001_185 = roc_curve(y_true_1001_185, -y_scores_1001_185)
 
     # Area under curve
     roc_auc_1001_185 = auc(fpr_1001_185, tpr_1001_185)
@@ -77,7 +77,7 @@ def plot_ROC(metadata):
 
     plt.xlabel("False Positive Rate")
     plt.ylabel("True Positive Rate")
-    plt.title("ROC Curve")
+    plt.title("ROC Curve for classification of HEU core vs DU core")
     plt.legend()
 
     plt.savefig("ROC_HEU_DU_core.png", dpi=300)

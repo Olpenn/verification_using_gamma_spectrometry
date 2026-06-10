@@ -4,63 +4,14 @@
 #include "json.hpp"
 using json = nlohmann::json;
 
-PMDetectorConstruction::PMDetectorConstruction(int time)
+PMDetectorConstruction::PMDetectorConstruction()
 {
-    time = time;
 }
 
 PMDetectorConstruction::~PMDetectorConstruction()
 {
 }
 
-G4Material* GetMaterial(std::string file_name)
-// Output: The G4Material* that exists after that time.
-{
-    // Open file with error checking
-    std::ifstream abundances_file(file_name);
-    if (!abundances_file.is_open()) {
-        throw std::runtime_error("Could not open file " + file_name);
-    }
-
-    // Parse JSON
-    json json_data;
-    abundances_file >> json_data;
-
-    G4int N_elements = json_data.size();
-
-    G4Material* material = new G4Material("Material", 19.1*g/cm3, N_elements);
-
-    G4NistManager* nist = G4NistManager::Instance();
-    int z;
-    int a;
-    std::string a_string;
-    std::string symbol;
-
-    for (auto& [key, value] : json_data.items()) {
-        a_string.erase();
-        symbol.erase();
-
-        // nist->GetZ takes the symbol only as input. Have to extract that.
-        size_t pos = key.find('-');
-        symbol = key.substr(0,pos);
-        z = nist->GetZ(symbol);
-
-        // Remove all non-digit characters to get the value of a, convvert to int
-        for (char c : key) {
-            if (std::isdigit(static_cast<unsigned char>(c))) {
-                a_string += c;
-            }
-        }
-        // Make string an int
-        a = std::stoi(a_string);
-
-        G4double mass = G4ParticleTable::GetParticleTable()->GetIonTable()->GetIonMass(z, a) / 931.494061; // Convert to g/mole
-        G4Element *element = new G4Element("element", key, z, mass * g/mole);
-        material->AddElement(element, value.get<double>());
-    }
-    return material;
-
-} 
 
 G4LogicalVolume* PMDetectorConstruction::GetLayer(G4double radiusInner, G4double radiusOuter, G4Material* material, G4String name) {
     // Each layer is constructed similarly, the difference between them are, the radius and material 
@@ -185,67 +136,50 @@ G4VPhysicalVolume *PMDetectorConstruction::Construct()
     // Core, Reflector, Tamper, HE, RadiationCase and Casing.
 
     // Create core
-    if (json_data.contains("Core")) {
-        logicCore = GetLayer(json_data["Core"]["inner"].get<double>()*cm, json_data["Core"]["outer"].get<double>()*cm, sourceMat, "Core");
-    }
+    logicCore = GetLayer(json_data["Core"]["inner"].get<double>()*cm, json_data["Core"]["outer"].get<double>()*cm, sourceMat, "Core");
 
     // Create Reflector
-    if (json_data.contains("Reflector")) {
-        logicReflector = GetLayer(json_data["Reflector"]["inner"].get<double>()*cm, json_data["Reflector"]["outer"].get<double>()*cm, refMat, "Reflector");
-    }
+    logicReflector = GetLayer(json_data["Reflector"]["inner"].get<double>()*cm, json_data["Reflector"]["outer"].get<double>()*cm, refMat, "Reflector");
 
     // Create HE
-    if (json_data.contains("HE")) {
-        logicHE = GetLayer(json_data["HE"]["inner"].get<double>()*cm, json_data["HE"]["outer"].get<double>()*cm, TATB, "HE");
-    }
+    logicHE = GetLayer(json_data["HE"]["inner"].get<double>()*cm, json_data["HE"]["outer"].get<double>()*cm, TATB, "HE");
 
     // Create radiation case
-    if (json_data.contains("RadiationCase")) {
-        logicRadiationCase = GetLayer(json_data["RadiationCase"]["inner"].get<double>()*cm, json_data["RadiationCase"]["outer"].get<double>()*cm, casingMat, "RadiationCase");
-    }
+    logicRadiationCase = GetLayer(json_data["RadiationCase"]["inner"].get<double>()*cm, json_data["RadiationCase"]["outer"].get<double>()*cm, casingMat, "RadiationCase");
 
     // Create casing
-    if (json_data.contains("Casing")) {
-        logicCasing = GetLayer(json_data["Casing"]["inner"].get<double>()*cm, json_data["Casing"]["outer"].get<double>()*cm, casingMat, "Casing");
-    }
-
+    logicCasing = GetLayer(json_data["Casing"]["inner"].get<double>()*cm, json_data["Casing"]["outer"].get<double>()*cm, casingMat, "Casing");
+    
     return physWorld;
 }
 
 void PMDetectorConstruction::ConstructSDandField()
 {
+    // Create, Initiate and Apply the respective SD to each logic volume
     auto SDManager = G4SDManager::GetSDMpointer();
 
-    // Create, Initiate and Apply the respective SD to each logic volume
-    if (logicCore != nullptr){
-        auto SDCore = new PMSensitiveDetector("SDCore");
-        SDManager->AddNewDetector(SDCore);
-        logicCore->SetSensitiveDetector(SDCore);
-    }
-    if (logicReflector != nullptr){
-        auto SDReflector = new PMSensitiveDetector("SDReflector");
-        SDManager->AddNewDetector(SDReflector);
-        logicReflector->SetSensitiveDetector(SDReflector);
-    }
-    if (logicTamper != nullptr){
-        auto SDTamper = new PMSensitiveDetector("SDTamper");
-        SDManager->AddNewDetector(SDTamper);
-        logicTamper->SetSensitiveDetector(SDTamper);
-    }
-    if (logicHE != nullptr){
-        auto SDHE = new PMSensitiveDetector("SDHE");
-        SDManager->AddNewDetector(SDHE);
-        logicHE->SetSensitiveDetector(SDHE);
-    }   
-    if (logicRadiationCase != nullptr){
-        auto SDRadiationCasing = new PMSensitiveDetector("SDRadiationCasing");
-        SDManager->AddNewDetector(SDRadiationCasing);
-        logicRadiationCase->SetSensitiveDetector(SDRadiationCasing);
-    }     
-    if (logicCasing != nullptr){
-        auto SDCasing = new PMSensitiveDetector("SDCasing");
-        SDManager->AddNewDetector(SDCasing);
-        logicCasing->SetSensitiveDetector(SDCasing);
-    }     
+    // Core
+    auto SDCore = new PMSensitiveDetector("SDCore");
+    SDManager->AddNewDetector(SDCore);
+    logicCore->SetSensitiveDetector(SDCore);
 
+    // Reflector
+    auto SDReflector = new PMSensitiveDetector("SDReflector");
+    SDManager->AddNewDetector(SDReflector);
+    logicReflector->SetSensitiveDetector(SDReflector);
+
+    // HE
+    auto SDHE = new PMSensitiveDetector("SDHE");
+    SDManager->AddNewDetector(SDHE);
+    logicHE->SetSensitiveDetector(SDHE);
+    
+    // Radiation Casing
+    auto SDRadiationCasing = new PMSensitiveDetector("SDRadiationCasing");
+    SDManager->AddNewDetector(SDRadiationCasing);
+    logicRadiationCase->SetSensitiveDetector(SDRadiationCasing);
+       
+    // Casing
+    auto SDCasing = new PMSensitiveDetector("SDCasing");
+    SDManager->AddNewDetector(SDCasing);
+    logicCasing->SetSensitiveDetector(SDCasing);
 }

@@ -77,7 +77,7 @@ def plot_ROC(metadata):
 
     plt.xlabel("False Positive Rate")
     plt.ylabel("True Positive Rate")
-    plt.title("ROC Curve")
+    plt.title("ROC Curve for classification of HEU core vs no core")
     plt.legend()
 
     plt.savefig("ROC_185.png", dpi=300)

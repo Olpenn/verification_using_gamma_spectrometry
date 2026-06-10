@@ -18,7 +18,4 @@ void PMActionInitialization::Build() const
 
     // Implement run action
     SetUserAction(new PMRunAction());
-
-
-    SetUserAction(new KillerStackingAction());
 }

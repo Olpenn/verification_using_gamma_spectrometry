@@ -46,7 +46,7 @@ def core_case_emission_detection_plot(metadata):
 
 
     plt.xlabel("185.7 keV Photon Intensity ($s^{-1}$)")
-    plt.ylabel("1001.0 keV Photon Intensity ($s^{-1}$)")
+    plt.ylabel("1001 keV Photon Intensity ($s^{-1}$)")
     ax.set_xscale('log')
     ax.set_yscale('log')
 
