@@ -30,14 +30,14 @@ def plot_attenaution(metadata_185, metadata_1001):
     plt.scatter(detected_core[0], detected_core[1], marker='x', label="After core", color="darkred")
     plt.scatter(detected_reflector[0], detected_reflector[1], marker='x', label="After reflector", color="firebrick")
     plt.scatter(detected_HE[0], detected_HE[1], marker='x', label="After HE", color="red")
-    plt.scatter(detected_radiationCase[0], detected_radiationCase[1], marker='x', label="After radiaiton case", color="orangered")
+    plt.scatter(detected_radiationCase[0], detected_radiationCase[1], marker='x', label="After radiation case", color="orangered")
     plt.scatter(detected[0], detected[1], marker='x', label="After casing", color="orange")
 
     plt.annotate("Emission", emission, xytext=(-25, -14), textcoords="offset points")
     plt.annotate("After core", detected_core, xytext=(5, -4), textcoords="offset points")
     plt.annotate("After reflector", detected_reflector, xytext=(5, -10), textcoords="offset points")
     plt.annotate("After HE", detected_HE, xytext=(5, -4), textcoords="offset points")
-    plt.annotate("After radiaiton case", detected_radiationCase, xytext=(5, -4), textcoords="offset points")
+    plt.annotate("After radiation case", detected_radiationCase, xytext=(5, -4), textcoords="offset points")
     plt.annotate("After casing", detected, xytext=(5, -10), textcoords="offset points")
 
 

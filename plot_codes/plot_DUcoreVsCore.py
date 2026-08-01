@@ -25,14 +25,14 @@ def core_case_emission_detection_plot(metadata):
     photon_intensity_DUcore_1001 = np.array(photon_intensity_DUcore_1001)
     
 
-    plt.figure(figsize=(10, 5))
+    plt.figure(figsize=(10, 8))
     ax = plt.gca()
-    plt.title("Detected 185.7 keV photons from a HEU core and a DU core")
+    plt.title("185.7 keV gamma rays escaping from\na HEU warhead and a DU warhead", fontsize=30)
 
     bins_core = np.logspace(np.log10(photon_intensity_core_185.min()), np.log10(photon_intensity_core_185.max()), 50)
     plt.hist(photon_intensity_core_185, 
              bins=bins_core, 
-             alpha=0.5,
+             alpha=1,
              edgecolor='black',
              linewidth=0.8,
              histtype='stepfilled',
@@ -42,29 +42,29 @@ def core_case_emission_detection_plot(metadata):
     plt.hist(photon_intensity_DUcore_185, 
              edgecolor='black',
              linewidth=0.8,
-             alpha=0.5,
+             alpha=1,
              bins=bins_case, 
              histtype='stepfilled',
              label='DU Core',
              color='blue')
 
-    plt.legend()
+    plt.legend(fontsize=20)
 
-    plt.xlabel("185.7 keV Photon Intensity ($s^{-1}$)")
-    plt.ylabel("Count")
+    plt.xlabel("185.7 keV Photon Intensity ($s^{-1}$)", fontsize=20)
+    plt.ylabel("Count", fontsize=20)
     ax.set_xscale('log')
 
     plt.savefig(f"coreVsDucore_185_hist.png", dpi=300)
 
 
-    plt.figure(figsize=(10, 5))
+    plt.figure(figsize=(10, 8))
     ax = plt.gca()
-    plt.title("Detected 1001 keV photons from a HEU core and a DU core")
+    plt.title("1001 keV gamma rays escaping from\na HEU warhead and a DU warhead", fontsize=30)
 
     bins_core = np.logspace(np.log10(photon_intensity_core_1001.min()), np.log10(photon_intensity_core_1001.max()), 50)
     plt.hist(photon_intensity_core_1001, 
              bins=bins_core, 
-             alpha=0.5,
+             alpha=1,
              edgecolor='black',
              linewidth=0.8,
              histtype='stepfilled',
@@ -74,16 +74,16 @@ def core_case_emission_detection_plot(metadata):
     plt.hist(photon_intensity_DUcore_1001, 
              edgecolor='black',
              linewidth=0.8,
-             alpha=0.5,
+             alpha=1,
              bins=bins_case, 
              histtype='stepfilled',
              label='DU Core',
              color='blue')
 
-    plt.legend()
+    plt.legend(fontsize=20)
 
-    plt.xlabel("1001 keV Photon Intensity ($s^{-1}$)")
-    plt.ylabel("Count")
+    plt.xlabel("1001 keV Photon Intensity ($s^{-1}$)", fontsize=20)
+    plt.ylabel("Count", fontsize=20)
     ax.set_xscale('log')
 
     plt.savefig(f"coreVsDucore_1001_hist.png", dpi=300)

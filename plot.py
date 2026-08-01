@@ -87,7 +87,7 @@ def core_case_plot(metadata):
 
     plt.figure(figsize=(10, 5))
     ax = plt.gca()
-    plt.title("Detected emission from the core and the case with case thickness as a colorbar")
+    plt.title("Gamma rays escaping the warhead with case thickness as a colorbar")
 
     plt.scatter(photon_intensity_case_185, photon_intensity_case_1001, marker='+', label="Detected emission from the case", c=Z, alpha=alpha_values)
     sc = plt.scatter(photon_intensity_core_185, photon_intensity_core_1001, marker='x', label="Detected emission from the core", c=Z, alpha=alpha_values)
@@ -97,9 +97,9 @@ def core_case_plot(metadata):
 
     # Create custom legend handles (force alpha=1)
     legend_elements = [
-        Line2D([0], [0], marker='+', linestyle='None', label='Detected emission from the case',
+        Line2D([0], [0], marker='+', linestyle='None', label='Escaping from the case',
             color='black', markersize=8, alpha=1.0),
-        Line2D([0], [0], marker='x', linestyle='None', label='Detected emission from the core',
+        Line2D([0], [0], marker='x', linestyle='None', label='Escaping from the core',
             color='black', markersize=8, alpha=1.0)
     ]
 
@@ -117,7 +117,7 @@ def core_case_plot(metadata):
 
     plt.figure(figsize=(10, 5))
     ax = plt.gca()
-    plt.title("Detected emission from the core and the case with case mass as a colorbar")
+    plt.title("Gamma rays escaping the warhead with case mass as a colorbar")
 
     plt.scatter(photon_intensity_case_185, photon_intensity_case_1001, marker='+', label="Detected emission from the case", c=radiationCase_masses, alpha=alpha_values)
     sc = plt.scatter(photon_intensity_core_185, photon_intensity_core_1001, marker='x', label="Detected emission from the core", c=radiationCase_masses, alpha=alpha_values)
@@ -127,9 +127,9 @@ def core_case_plot(metadata):
 
     # Create custom legend handles (force alpha=1)
     legend_elements = [
-        Line2D([0], [0], marker='+', linestyle='None', label='Detected emission from the case',
+        Line2D([0], [0], marker='+', linestyle='None', label='Escaping from the case',
             color='black', markersize=8, alpha=1.0),
-        Line2D([0], [0], marker='x', linestyle='None', label='Detected emission from the core',
+        Line2D([0], [0], marker='x', linestyle='None', label='Escaping from the core',
             color='black', markersize=8, alpha=1.0)
     ]
 
@@ -147,7 +147,7 @@ def core_case_plot(metadata):
 
     plt.figure(figsize=(10, 5))
     ax = plt.gca()
-    plt.title("Detected emission from the core and the case with space radius as a colorbar")
+    plt.title("Gamma rays escaping the warhead with space radius as a colorbar")
 
     plt.scatter(photon_intensity_case_185, photon_intensity_case_1001, marker='+', label="Detected emission from the case", c=space_thicknesses, alpha=alpha_values)
     sc = plt.scatter(photon_intensity_core_185, photon_intensity_core_1001, marker='x', label="Detected emission from the core", c=space_thicknesses, alpha=alpha_values)
@@ -157,9 +157,9 @@ def core_case_plot(metadata):
 
     # Create custom legend handles (force alpha=1)
     legend_elements = [
-        Line2D([0], [0], marker='+', linestyle='None', label='Detected emission from the case',
+        Line2D([0], [0], marker='+', linestyle='None', label='Escaping from the case',
             color='black', markersize=8, alpha=1.0),
-        Line2D([0], [0], marker='x', linestyle='None', label='Detected emission from the core',
+        Line2D([0], [0], marker='x', linestyle='None', label='Escaping emission from the core',
             color='black', markersize=8, alpha=1.0)
     ]
 
@@ -177,7 +177,7 @@ def core_case_plot(metadata):
 
     plt.figure(figsize=(10, 5))
     ax = plt.gca()
-    plt.title("Detected emission from the core and the case with enrichments as colorbars")
+    plt.title("Gamma rays escaping the warhead with enrichments as colorbars")
 
     sc_case = plt.scatter(
         photon_intensity_case_185, 
@@ -202,9 +202,9 @@ def core_case_plot(metadata):
 
     # Create custom legend handles (force alpha=1)
     legend_elements = [
-        Line2D([0], [0], marker='+', linestyle='None', label='Detected emission from the case',
+        Line2D([0], [0], marker='+', linestyle='None', label='Escaping from the case',
             color='black', markersize=8, alpha=1.0),
-        Line2D([0], [0], marker='x', linestyle='None', label='Detected emission from the core',
+        Line2D([0], [0], marker='x', linestyle='None', label='Escaping from the core',
             color='black', markersize=8, alpha=1.0)
     ]
 
@@ -222,7 +222,7 @@ def core_case_plot(metadata):
 
     plt.figure(figsize=(10, 5))
     ax = plt.gca()
-    plt.title("Detected emission from the core and the case with gap thickness as colorbars")
+    plt.title("Gamma rays escaping the warhead with gap thickness as colorbars")
 
     plt.scatter(photon_intensity_case_185, photon_intensity_case_1001, marker='+', label="Detected emission from the case", c=gap_thicknesses, alpha=alpha_values)
     sc = plt.scatter(photon_intensity_core_185, photon_intensity_core_1001, marker='x', label="Detected emission from the core", c=gap_thicknesses, alpha=alpha_values)
@@ -232,9 +232,9 @@ def core_case_plot(metadata):
 
     # Create custom legend handles (force alpha=1)
     legend_elements = [
-        Line2D([0], [0], marker='+', linestyle='None', label='Detected emission from the case',
+        Line2D([0], [0], marker='+', linestyle='None', label='Escaping from the case',
             color='black', markersize=8, alpha=1.0),
-        Line2D([0], [0], marker='x', linestyle='None', label='Detected emission from the core',
+        Line2D([0], [0], marker='x', linestyle='None', label='Escaping from the core',
             color='black', markersize=8, alpha=1.0)
     ]
 

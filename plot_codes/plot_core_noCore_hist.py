@@ -21,8 +21,8 @@ def core_case_emission_detection_plot(metadata):
         photon_detection_case_1001.append(geometry["detected_background_emission_1001.0keV"])
 
 
-    plt.figure(figsize=(10, 5))
-    plt.title("Detected 185.7 keV photons from a real and hoax warhead")
+    plt.figure(figsize=(10, 8))
+    plt.title("185.7 keV gamma rays escaping from\na real and hoax warhead", fontsize=30)
     photon_detection_core_185 = np.array(photon_detection_core_185)
     photon_detection_case_185 = np.array(photon_detection_case_185)
     photon_detection_real_185 = photon_detection_core_185 + photon_detection_case_185
@@ -46,16 +46,16 @@ def core_case_emission_detection_plot(metadata):
              label='Hoax',
              color='blue')
     
-    plt.legend()
+    plt.legend(fontsize=20)
 
-    plt.xlabel("185.7 keV Photon Intensity ($s^{-1}$)")
-    plt.ylabel("Count")
+    plt.xlabel("185.7 keV Photon Intensity ($s^{-1}$)", fontsize=20)
+    plt.ylabel("Count", fontsize=20)
     plt.xscale('log')
 
     plt.savefig(f"real_hoax_185keV.png", dpi=300)
 
-    plt.figure(figsize=(10, 5))
-    plt.title("Detected 1001 keV photons from a real and hoax warhead")
+    plt.figure(figsize=(10, 8))
+    plt.title("1001 keV gamma rays escaping from\na real and hoax warhead", fontsize=30)
     photon_detection_core_1001 = np.array(photon_detection_core_1001)
     photon_detection_case_1001 = np.array(photon_detection_case_1001)
     photon_detection_real_1001 = photon_detection_case_1001 + photon_detection_core_1001
@@ -79,10 +79,10 @@ def core_case_emission_detection_plot(metadata):
              label='Hoax',
              color='blue')
     
-    plt.legend()
+    plt.legend(fontsize=20)
 
-    plt.xlabel("1001 keV Photon Intensity ($s^{-1}$)")
-    plt.ylabel("Count")
+    plt.xlabel("1001 keV Photon Intensity ($s^{-1}$)", fontsize=20)
+    plt.ylabel("Count", fontsize=20)
     plt.xscale('log')
 
     plt.savefig(f"real_hoax_1001keV.png", dpi=300)

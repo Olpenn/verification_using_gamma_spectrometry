@@ -21,8 +21,8 @@ def core_case_emission_detection_plot(metadata):
         photon_emission_case_1001.append(geometry["background_activity_1001.0keV"])
 
 
-    plt.figure(figsize=(10, 5))
-    plt.title("Emitted 185.7 keV photons from the core and the case")
+    plt.figure(figsize=(10, 8))
+    plt.title("1001 keV gamma rays emitted from\nthe core and the radiation case", fontsize=30)
     photon_emission_core_185 = np.array(photon_emission_core_185)
     photon_emission_case_185 = np.array(photon_emission_case_185)
 
@@ -43,16 +43,16 @@ def core_case_emission_detection_plot(metadata):
              label='Case',
              color='blue')
     
-    plt.legend()
+    plt.legend(fontsize=20)
 
-    plt.xlabel("185.7 keV Photon Intensity ($s^{-1}$)")
-    plt.ylabel("Count")
+    plt.xlabel("185.7 keV Photon Intensity ($s^{-1}$)", fontsize=20)
+    plt.ylabel("Count", fontsize=20)
     plt.xscale('log')
 
     plt.savefig(f"Emission_185keV.png", dpi=300)
 
-    plt.figure(figsize=(10, 5))
-    plt.title("Emitted 1001 keV photons from the core and the case")
+    plt.figure(figsize=(10, 8))
+    plt.title("1001 keV gamma rays emitted from\nthe core and the radiation case", fontsize=30)
     photon_emission_core_1001 = np.array(photon_emission_core_1001)
     photon_emission_case_1001 = np.array(photon_emission_case_1001)
 
@@ -73,10 +73,10 @@ def core_case_emission_detection_plot(metadata):
              label='Case',
              color='blue')
     
-    plt.legend()
+    plt.legend(fontsize=20)
 
-    plt.xlabel("1001 keV Photon Intensity ($s^{-1}$)")
-    plt.ylabel("Count")
+    plt.xlabel("1001 keV Photon Intensity ($s^{-1}$)", fontsize=20)
+    plt.ylabel("Count", fontsize=20)
     plt.xscale('log')
 
     plt.savefig(f"Emission_1001keV.png", dpi=300)
