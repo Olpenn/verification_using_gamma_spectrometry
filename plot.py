@@ -147,19 +147,19 @@ def core_case_plot(metadata):
 
     plt.figure(figsize=(10, 5))
     ax = plt.gca()
-    plt.title("Gamma rays escaping the warhead with space radius as a colorbar")
+    plt.title("Gamma rays escaping the warhead with cavity radius as a colorbar")
 
     plt.scatter(photon_intensity_case_185, photon_intensity_case_1001, marker='+', label="Detected emission from the case", c=space_thicknesses, alpha=alpha_values)
     sc = plt.scatter(photon_intensity_core_185, photon_intensity_core_1001, marker='x', label="Detected emission from the core", c=space_thicknesses, alpha=alpha_values)
 
     # Add colorbar to show mapping
-    plt.colorbar(sc, label="Space radius (cm)")
+    plt.colorbar(sc, label="Cavity radius (cm)")
 
     # Create custom legend handles (force alpha=1)
     legend_elements = [
         Line2D([0], [0], marker='+', linestyle='None', label='Escaping from the case',
             color='black', markersize=8, alpha=1.0),
-        Line2D([0], [0], marker='x', linestyle='None', label='Escaping emission from the core',
+        Line2D([0], [0], marker='x', linestyle='None', label='Escaping from the core',
             color='black', markersize=8, alpha=1.0)
     ]
 
