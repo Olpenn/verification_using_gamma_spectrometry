@@ -22,7 +22,7 @@ def core_case_emission_detection_plot(metadata):
 
 
     plt.figure(figsize=(10, 8))
-    plt.title("1001 keV gamma rays emitted from\nthe core and the radiation case", fontsize=30)
+    plt.title("185.7 keV gamma rays emitted from\nthe core and the radiation case", fontsize=30)
     photon_emission_core_185 = np.array(photon_emission_core_185)
     photon_emission_case_185 = np.array(photon_emission_case_185)
 
